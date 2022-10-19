@@ -1,2 +1,2 @@
 # deepgeneration
-image, code and documents generator
+image, code and blog generator
