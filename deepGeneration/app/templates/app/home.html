@@ -1,9 +1,31 @@
-{% extends 'base.html' %}
 
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-<p> Notre temps est précieux ! </p>
-<p> On perd souvent un temps fou à chercher des images libres de droits sur internet, a écrire des articles de blog ou trouver rapidement du code fonctionnel.
-    Avec DeepGenerator, vous pourrez réaliser tout cela en un temps record, en quelques clics ! </p>
+<div class="container-first">
+     <h1><span>D</span><span>e</span><span>e</span><span>p</span> <span>Generator</span></h1>
+     <div class="pitch">
+        <h2><span><p> Notre temps est précieux ! </p></span>
+        <span><p> On perd souvent un temps fou à chercher des images libres de droits sur internet, a écrire des articles de blog ou trouver rapidement du code fonctionnel.
+                  Avec DeepGenerator, vous pourrez réaliser tout cela en quelques clics ! </p></span></h2>
+     </div>
+     <div class="container-btns">
+         <button class="btn-first b1">Accueil</button>
+         <button class="btn-first b2">Image</button>
+         <button class="btn-first b2">Blog</button>
+         <button class="btn-first b2">Code</button>
+     </div>
+ </div>
+
+ {% comment %} <div class="body" 
+     style="background:  url({% static 'img/fondhome.jpg' %}); height:100vh;">
+     <div class = "pitch">
+        <p> Notre temps est précieux ! </p>
+        <p> On perd souvent un temps fou à chercher des images libres de droits sur internet, a écrire des articles de blog ou trouver rapidement du code fonctionnel.
+            Avec DeepGenerator, vous pourrez réaliser tout cela en quelques clics ! </p> 
+     </div>
+
+</div> {% endcomment %}
 
 {% endblock content %}  
