@@ -52,16 +52,16 @@ class Generator :
         self.setModel(Generator.accuracyModel)
         return self.getClient().code_generation(description)['generated_code']
 
-    def generateCode(self, description) :
+    def generateImage(self, description) :
         self.setModel(Generator.stableModel)
         return self.getClient().image_generation(description)['url']
 
     
-
+def countLeftSpace(s) :
+    return (len(s) - len(s.lstrip()))
 
 user = User()
 gen = Generator(user)
-
 
 def home_page(request):
     title = "Accueil"
@@ -70,7 +70,7 @@ def home_page(request):
 
 def image_page(request):
     title = "Image Generator"
-    image_url = gen.generateCode('a beautifull landscape')
+    image_url = gen.generateImage('a beautifull landscape')
     context = {"title" : title, 'image_url' : image_url}
     return render(request, 'app/image.html', context = context)
 

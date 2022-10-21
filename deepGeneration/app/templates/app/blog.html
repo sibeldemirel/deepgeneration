@@ -2,6 +2,10 @@
 
 {% block content %}
 
-{{blog}}
+<pre> {{blog}} </pre>
+
+{% autoescape off %}
+    {{blog}}
+{% endautoescape %}
 
 {% endblock content %}
