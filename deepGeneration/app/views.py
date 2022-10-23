@@ -70,7 +70,6 @@ def home_page(request):
 
 def image_page(request):
     title = "Image Generator"
-<<<<<<< HEAD
     image_url = gen.generateImage('a beautifull landscape')
     context = {"title" : title, 'image_url' : image_url}
     return render(request, 'app/image.html', context = context)
@@ -86,18 +85,3 @@ def blog_page(request):
     blog = gen.generateBlog('how to become a programmer ?')
     context = {"title" : title, 'blog' : blog}
     return render(request, 'app/blog.html', context = context)
-=======
-    context = {"title" : title}
-    return render(request, 'app/image.html', context = context)
-
-def blog_page(request):
-    title = "Blog Generator"
-    context = {"title" : title}
-    return render(request, 'app/blog.html', context = context)
-
-def code_page(request):
-    title = "Code Generator"
-    context = {"title" : title}
-    return render(request, 'app/code.html', context = context)
-
->>>>>>> 1c0bbc3e724db0ab0494e7e84822ded5a5d7584d
