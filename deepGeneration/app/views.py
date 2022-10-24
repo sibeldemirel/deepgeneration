@@ -22,6 +22,11 @@ def getDescription(request):
         description = form.cleaned_data['description']
         return description
 
+def article_page(request):
+    title = "Blog Generator"
+    blog = request.session['blog']
+    context = {"blog" : blog, 'title' : title}
+    return render(request, 'app/article.html', context = context)
 
 def blog_page(request):
     title = "Blog Generator"
@@ -29,12 +34,15 @@ def blog_page(request):
         # form.save()
         description = getDescription(request)
         blog = gen.generateBlog(description)
+        request.session['blog'] = blog
         context = {"title" : title, 'blog' : blog}
         return render(request, 'app/blog.html', context = context)
     else :
             form = forms.ApiForm()
             context = {"title" : title, 'form' : form}
             return render(request, 'app/form.html', context = context)
+
+
 
 def image_page(request):
     title = "Image Generator"

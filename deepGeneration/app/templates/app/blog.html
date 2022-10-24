@@ -2,10 +2,12 @@
 
 {% block content %}
 
-{% autoescape off %}
+{% comment %} {% autoescape off %}
     {{blog}}
-{% endautoescape %}
+{% endautoescape %} {% endcomment %}
 
 <pre> {{blog}} </pre>
+
+<div><a href={% url 'url_article' %}>Aperçu de l'article de blog</a></div>
 
 {% endblock content %}
