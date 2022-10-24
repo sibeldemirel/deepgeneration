@@ -1,14 +1,10 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base_sous_pages.html' %}
+
 {% block content %}
 
-<div class="container-first">
-     <div class="container-btns">
-         <div><button class="btn-first b2">Image</button></div>
-         <div><button class="btn-first b2">Blog</button></div>
-         
-     </div>
- </div>
+<img src={{image_url}} alt=description>
 
- 
-{% endblock content %}  
+<p> Veuillez Télécharger votre image au lien suivant : 
+<a href={{image_url}}>{{image_url}}</a> </p>
+
+{% endblock content %}
