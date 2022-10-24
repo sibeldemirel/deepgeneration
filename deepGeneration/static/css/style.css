@@ -16,10 +16,9 @@
 }
 
 body {
-    background: #333;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Abril fatface, sans-serif;
     height: 100vh;
-    background: url('../img/fondhome.jpg');
+    background: url('../img/fondhome.png');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -28,17 +27,15 @@ body {
 
 .container-first {
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 5%;
-    align-items: center;
-    background: contrast(50%);
 }
 
 
 h1 {
     text-transform: uppercase;
     font-size: 100px;
-    color: #f1f1f1;
+    color: #ffffff;
     font-family: Abril fatface, sans-serif;
 }
 
@@ -49,9 +46,9 @@ h1 span {
 h2 {
     text-transform: capitalize
     font-size: 25px;
-    color: #f5f5f5;
+    color: #ffffff;
     font-family: Abril fatface, sans-serif;
-    text-shadow:0 3px 0 #000000, 0 -3px 0 #000000;
+    text-shadow: black 3px 3px 3px 
 }
 
 h2 span {
@@ -60,43 +57,52 @@ h2 span {
 
 .gras_italique_serif {
     font: bold italic large serif;
-    font-size: 25px;
+    font-size: 30px;
   }
 
 .container-btns {
+    margin-right: 10%;
     position: relative;
     top: 50px;
+    display: flex;
+    justify-content: space-between;
 }
+
 .btn-first {
-    border: 3px solid #f1f1f1;
+    border: 5px solid #f1f1f1;
     outline: none;
     background: transparent;
-    background-color: rgba(0, 0, 0, 0.151);
+    background-color: rgba(0, 0, 0, 0.493);
     font-size: 30px;
     padding: 20px;
     width: 300px;
     color: #ffffff;
     cursor: pointer;
 }
+
 .btn-first:nth-child(1){
     margin-right: 30px;
 }
+
 .btn-first:hover {
     transition: all 0.3s ease-in-out;
     background: #f1f1f1;
     color: #333;
 }
+
 .lignes {
     position: absolute;
     top: 6%;
     left: 5%;
 }
+
 .l1 {
     width: 250px;
     height: 3px;
     background: #f1f1f1;
     border-radius: 5px;
 }
+
 .l2 {
     width: 140px;
     height: 3px;
