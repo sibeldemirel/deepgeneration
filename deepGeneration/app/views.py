@@ -36,14 +36,13 @@ def blog_page(request):
             context = {"title" : title, 'form' : form}
             return render(request, 'app/form.html', context = context)
 
-
 def image_page(request):
     title = "Image Generator"
     if request.method =="POST" :
         # form.save()
         description = getDescription(request)
         image_url = gen.generateImage(description)
-        context = {"title" : title, 'image_url' : image_url}
+        context = {"title" : title, 'image_url' : image_url, 'description' : description}
         return render(request, 'app/image.html', context = context)
     else :
         form = forms.ApiForm()
