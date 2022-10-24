@@ -16,6 +16,8 @@
     <title>{{title}}</title>
 </head>
 <body>
+    {% block header %}{% endblock header %}
+    {% block nav %} {% endblock nav %}
     {% block content %} {% endblock content %}
     {% include 'includes/footer.html' %}
     
