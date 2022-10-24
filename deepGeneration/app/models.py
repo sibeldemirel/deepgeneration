@@ -7,3 +7,5 @@ class ApiModel(models.Model):
         blank=False,
         null=False,
     )
+
+    
