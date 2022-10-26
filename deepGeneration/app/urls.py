@@ -9,4 +9,6 @@ urlpatterns = [
     path('code/', views.code_page, name = 'url_code'),
     path('blog/', views.blog_page, name = 'url_blog'),
     path('article/', views.article_page, name = 'url_article'),
+    path('contact/', views.contact_page, name = 'url_contact'),
+
 ]

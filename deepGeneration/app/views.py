@@ -72,3 +72,7 @@ def code_page(request):
             return render(request, 'app/form.html', context = context)
 
     
+def contact_page(request):
+    title = "Contact"
+    context = {"title" : title}
+    return render(request, 'app/contact.html', context = context)
