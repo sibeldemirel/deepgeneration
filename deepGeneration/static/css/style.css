@@ -200,9 +200,11 @@ a:active, a:focus {
 
 #section_form{
     background-color: rgb(107, 115, 177);
-    width: 22%;
     border-radius: 7px;
     padding: 0.5%;
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: min-content;
 }
 
 .image_gen{
@@ -280,7 +282,6 @@ textarea{
 
 #btn-aperçu{
     margin-left: 1em;
-
 }
 
 #zone{
@@ -293,7 +294,6 @@ textarea{
     padding: 15px;
     width:90%;
     height: 100%;
- 
 }
 
 .font_code{
@@ -307,4 +307,27 @@ textarea{
     justify-content: start;
     
  
+}
+
+.border_contact{
+    box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884);
+    width: 40%;
+}
+
+.contenu{
+    display: flex;
+    justify-content: center;
+}
+
+#btn-contact{
+    width: 150px;
+}
+
+#centrer-btn{
+    display: flex;
+    justify-content: center;
+}
+
+#id_description{
+    max-width: 500px;
 }
