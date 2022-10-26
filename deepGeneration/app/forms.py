@@ -6,6 +6,6 @@ class ApiForm(forms.ModelForm):
     class Meta:
         model = models.ApiModel
         fields = "__all__"
-        # labels = {
-        #     "description": "Entrez une description ",
-        # }
+        labels = {
+            "description ": " entrez votre description",
+        }
