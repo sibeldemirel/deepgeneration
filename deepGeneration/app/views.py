@@ -1,26 +1,23 @@
 from django.shortcuts import render
-from . import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
-from . import user, generator
-
-from requests import Session
-import json
-
-from dotenv import load_dotenv
-import os
-
-from django.http import HttpResponseRedirect
-import requests
-
+from django.views.generic import ListView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from . import user, generator, forms, models
+# from
+from os import getenv
+import requests
+# from .secret import token
+
 
 user = user.User()
 gen = generator.Generator(user)
 
 def home_page(request):
     title = "Accueil"
+    
     context = {"title" : title}
     return render(request, 'app/home.html', context = context)
 
@@ -80,7 +77,6 @@ def blog_page(request):
             return render(request, 'app/form.html', context = context)
 
 
-
 def image_page(request):
     title = "Image Generator"
     if request.method =="POST" :
@@ -122,13 +118,3 @@ print(factoriel(n))
             return render(request, 'app/form.html', context = context)
 
     
-def contact_page(request):
-    title = "Contact"
-    context = {"title" : title}
-    return render(request, 'app/contact.html', context = context)
-
-class SignupPage(CreateView):
-    form_class= UserCreationForm
-    success_url= reverse_lazy('login')
-    template_name= 'registration/signup.html'
-
