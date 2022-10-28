@@ -22,3 +22,12 @@ window.addEventListener('load', () => {
 
     TL.play();
 })
+
+let editor = document.querySelector('textarea');
+let button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+    editor.select()
+    document.execCommand('copy')
+    button.innerText = "Copié !";
+})

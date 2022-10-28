@@ -2,9 +2,12 @@
 
 {% block content %}
 
-<img src={{image_url}} alt={{description}}>
+<div class = "image_gen"><img src={{image_url}} alt={{description}}>
+    <div>
+        <p> Veuillez Télécharger votre image au lien suivant : <br>
+            <a href={{image_url}}>{{image_url}}</a> </p>
+    </div>
 
-<p> Veuillez Télécharger votre image au lien suivant : 
-<a href={{image_url}}>{{image_url}}</a> </p>
+</div>
 
 {% endblock content %}

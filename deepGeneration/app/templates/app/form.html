@@ -2,10 +2,14 @@
 
 {% block content %}
 {% if form %}
+
 <form method="post">
     {% csrf_token %}
+    <fieldset id="section_form">
     {{form}}
-    <input type="submit" value="OK">
+    <input type="submit" value="OK" style="width:50px;">
+    </fieldset>
 </form>
+</div>
 {% endif %}
 {% endblock content %}
