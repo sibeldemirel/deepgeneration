@@ -8,4 +8,16 @@ class ApiModel(models.Model):
         null=False,
     )
 
-    
+
+class BlogModel(models.Model):
+    description = models.TextField(
+        # max_length=500,
+        blank=False,
+        null=False,
+    )
+    contenu = models.TextField(
+        # max_length=500,
+        blank=False,
+        null=False,
+    )
+    # date = 

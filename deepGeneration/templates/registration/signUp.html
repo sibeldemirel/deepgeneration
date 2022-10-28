@@ -4,13 +4,12 @@
 {% block content %}
 
 <section class="vh-100 bg-image"
-style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
 <div class="mask d-flex align-items-center h-100 gradient-custom-3">
 <div class="container h-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
       <div class="card" style="border-radius: 15px;">
-        <div class="card-body p-5">
+        <div class="card-body p-5 gradient-custom-3">
           <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
           <form method='POST'>
@@ -19,28 +18,23 @@ style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/
             <div class="form-outline mb-4">
               {{form.username|add_class:'form-control form-control-lg'}}
               {% comment %} {{form.username.label_tag}}  {% endcomment %}
-
-              {% comment %} <input type="text" id="form3Example1cg" class="form-control form-control-lg" /> {% endcomment %}
               <label class="form-label" for="form3Example1cg">Username</label>
               
             </div>
 
-            {% comment %} <div class="form-outline mb-4">
-              <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+            <div class="form-outline mb-4">
               {{form.email|add_class:'form-control form-control-lg'}}
               <label class="form-label" for="form3Example3cg">Email</label>
-            </div> {% endcomment %}
-
-            <div class="form-outline mb-4">
-              {% comment %} <input type="password" id="form3Example4cg" class="form-control form-control-lg" /> {% endcomment %}
-              {{form.password1|add_class:'form-control'}}
-              <label class="form-label" for="form3Example4cg">Password</label>
-              
-               {% comment %} {{form.password1.helptext}} {% endcomment %}
             </div>
 
             <div class="form-outline mb-4">
-              {% comment %} <input type="password" id="form3Example4cdg" class="form-control form-control-lg" /> {% endcomment %}
+              {{form.password1|add_class:'form-control'}}
+              <label class="form-label" for="form3Example4cg">Password</label>
+              
+               {{form.password1.helptext|add_class:'form-control'}}
+            </div>
+
+            <div class="form-outline mb-4">
               {{form.password2|add_class:'form-control'}}
               <label class="form-label" for="form3Example4cdg">Repeat your password</label>
             </div>
@@ -70,14 +64,6 @@ style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/
 </div>
 </section>
 
-{% comment %} <div class='container'>
-  <form method="post">
-      {% csrf_token %}
-      {{form|crispy}}
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  </div> {% endcomment %}
-
 <style>
   .gradient-custom-3 {
     /* fallback for old browsers */
@@ -85,9 +71,10 @@ style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/
     
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
-    
+
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+    {% comment %} box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884); {% endcomment %}
     }
     .gradient-custom-4 {
     /* fallback for old browsers */

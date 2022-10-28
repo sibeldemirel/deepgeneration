@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 
+
 <div class="container-first">
      <h1><span>D</span><span>e</span><span>e</span><span>p</span> <span>Generator</span></h1> <br>
      <div>
@@ -11,11 +12,12 @@
                   Avec DeepGenerator, vous pourrez réaliser tout cela en quelques clics ! </p></span></h2>
      </div>
      <div class="container-btns">
-         <div><button class="btn-first b2">Image</button></div>
-         <div><button class="btn-first b2">Blog</button></div>
-         <div><button class="btn-first b2">Code</button></div>
+         <div><button class="btn-first b2"><a href={% url 'url_image' %}>Image</a></button></div>
+         <div><button class="btn-first b2"><a href={% url 'url_blog' %}>Blog</a></button></div>
+         <div><button class="btn-first b2"><a href={% url 'url_code' %}>Code</a></button></div>
      </div>
  </div>
+
 
  
 {% endblock content %}  
