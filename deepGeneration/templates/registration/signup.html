@@ -8,7 +8,7 @@ style="">
 <div class="container h-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-      <div class="card" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.900);' box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884);">
+      <div class="card" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.900);');">
         <div class="card-body p-5">
           <h2 class="text-uppercase text-center mb-5">Créer un compte</h2>
 
@@ -33,7 +33,7 @@ style="">
 
             <div class="form-outline mb-4">
             <label class="form-label" for="form3Example4cg">Mot de passe:</label>
-              <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+            {% comment %} <input type="password" id="form3Example4cg" class="form-control form-control-lg" /> {% endcomment %}
               {{form.password1|add_class:'form-control'}}
               
               
@@ -43,7 +43,7 @@ style="">
             <div class="form-outline mb-4">
              
               <label class="form-label" for="form3Example4cdg">Confirmer votre mot de passe :</label>
-              <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+              {% comment %} <input type="password" id="form3Example4cdg" class="form-control form-control-lg" /> {% endcomment %}
               {{form.password2|add_class:'form-control'}}
             </div>
 
@@ -60,11 +60,12 @@ style="">
             </div>
 
             <p class="text-center text-muted mt-5 mb-0">Vous avez déjà un compte? <a href= {% url 'login' %}
-                class="fw-bold text-body"><u>Connectez-vous ici</u></a></p>
+                class="fw-bold text-body"><u> Connectez-vous ici</u></a></p>
 
           </form>
 
         </div>
+      </div>
       </div>
     </div>
   </div>
