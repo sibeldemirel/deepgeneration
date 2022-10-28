@@ -8,7 +8,7 @@ class Generator :
 
 
     def __init__(self, user) :
-        self.__user : User = user
+        self.__user  = user
 
     def getUser(self) :
         return self.__user
@@ -21,8 +21,9 @@ class Generator :
 
     def getClient(self) :
         return nlpcloud.Client(self.getModel(), self.getUser().getToken(), True, lang=self.getUser().getUserLanguage())
+        # return nlpcloud.Client(self.getModel(), self.getUser().getToken())
 
-    def generateBlog(self, description) :
+    def generateArticle(self, description) :
         self.setModel(Generator.fastModel)
         return self.getClient().article_generation(description)['generated_article']
 
@@ -33,3 +34,9 @@ class Generator :
     def generateImage(self, description) :
         self.setModel(Generator.stableModel)
         return self.getClient().image_generation(description)['url']
+
+    def generateSummarization(self, description) :
+        self.setModel(Generator.accuracyModel)
+        return self.getClient().summarization(description)['summary_text']
+
+    
