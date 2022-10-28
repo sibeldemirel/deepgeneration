@@ -1,5 +1,5 @@
 *, ::before, ::after {
-    box-sizing: : border-box;
+    box-sizing:  border-box;
     margin: 0;
     padding: 0;
 }
@@ -25,17 +25,11 @@
     flex-grow: 1;
 }
 
-*, ::before, ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font-family: Abril fatface, sans-serif;
     height: 100vh;
     background: url('../img/fondhome2.jpg');
-    background-repeat: no-repeat repeat
+    background-repeat: no-repeat repeat;
     background-size: cover;
     position: relative;
     overflow-x: hidden;
@@ -62,11 +56,11 @@ h1 span {
 }
 
 h2 {
-    text-transform: capitalize
+    text-transform: capitalize;
     font-size: 25px;
     color: #ffffff;
     font-family: Abril fatface, sans-serif;
-    text-shadow: black 3px 3px 3px 
+    text-shadow: black 3px 3px 3px ;
 }
 
 h2 span {
@@ -159,7 +153,7 @@ h2 span {
     justify-content: center;
     align-items: center;
     margin: 35px 0;
-    background-color: rgb(0, 0, 0)
+    background-color: rgb(0, 0, 0);
     cursor: pointer;
     position: relative;
 }
@@ -200,9 +194,11 @@ a:active, a:focus {
 
 #section_form{
     background-color: rgb(107, 115, 177);
-    width: 22%;
     border-radius: 7px;
     padding: 0.5%;
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: min-content;
 }
 
 .image_gen{
@@ -280,7 +276,6 @@ textarea{
 
 #btn-aperçu{
     margin-left: 1em;
-
 }
 
 #zone{
@@ -293,7 +288,6 @@ textarea{
     padding: 15px;
     width:90%;
     height: 100%;
- 
 }
 
 .font_code{
@@ -307,4 +301,27 @@ textarea{
     justify-content: start;
     
  
+}
+
+.border_contact{
+    box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884);
+    width: 40%;
+}
+
+.contenu{
+    display: flex;
+    justify-content: center;
+}
+
+#btn-contact{
+    width: 150px;
+}
+
+#centrer-btn{
+    display: flex;
+    justify-content: center;
+}
+
+#id_description{
+    max-width: 500px;
 }
