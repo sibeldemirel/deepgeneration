@@ -10,7 +10,7 @@ style="background-image: url('../../static/img/fondhome2.jpg');">
     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
       <div class="card" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.900);');">
         <div class="card-body p-5">
-          <h2 class="text-uppercase text-center mb-5">Créer un compte</h2>
+          <h2 class="text-uppercase text-center mb-5">Se connecter</h2>
 
           <form method='POST'>
             {% csrf_token %}
@@ -40,27 +40,27 @@ style="background-image: url('../../static/img/fondhome2.jpg');">
                {% comment %} {{form.password1.helptext}} {% endcomment %}
             </div>
 
-            <div class="form-outline mb-4">
+            {% comment %} <div class="form-outline mb-4">
              
               <label class="form-label" for="form3Example4cdg">Confirmer votre mot de passe :</label>
               <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
               {{form.password2|add_class:'form-control'}}
-            </div>
+            </div> {% endcomment %}
 
-            <div class="form-check d-flex justify-content-center mb-5">
+            {% comment %} <div class="form-check d-flex justify-content-center mb-5">
               <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
               <label class="form-check-label" for="form2Example3g">
                 J'accepte les conditions d'utilisations <a href="#!" class="text-body"><u>en termes de services</u></a>
               </label>
-            </div>
+            </div> {% endcomment %}
 
             <div class="d-flex justify-content-center">
               <button type="submit"
                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Envoyer</button>
             </div>
-
+{% comment %} 
             <p class="text-center text-muted mt-5 mb-0">Vous avez déjà un compte? <a href= {% url 'login' %}
-                class="fw-bold text-body"><u>Connectez-vous ici</u></a></p>
+                class="fw-bold text-body"><u>Connectez-vous ici</u></a></p> {% endcomment %}
 
           </form>
 
