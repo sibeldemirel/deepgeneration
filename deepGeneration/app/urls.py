@@ -9,6 +9,7 @@ urlpatterns = [
     path('code/', views.code_page, name = 'url_code'),
     path('blog/', views.blog_page, name = 'url_blog'),
     path('article/', views.article_page, name = 'url_article'),
+    path('contact/', views.contact_page, name = 'url_contact'),
     path('special/', views.special_page, name = 'url_special'),
     path('list/', views.ModelListView.as_view(), name = 'url_requestsList'),
     path('signup/', views.SignUpPage.as_view(), name = 'url_signup'),

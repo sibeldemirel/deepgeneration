@@ -117,4 +117,24 @@ print(factoriel(n))
             context = {"title" : title, 'form' : form}
             return render(request, 'app/form.html', context = context)
 
-    
+def contact_page(request):
+    title = "Contact"
+    context = {"title" : title}
+    return render(request, 'app/contact.html', context = context)
+
+@login_required
+def special_page(request) :
+    title = "special"
+    context = {"title" : title}
+    return render(request, 'app/special_page.html', context = context)
+
+
+class ModelListView(LoginRequiredMixin,ListView) :
+    model = models.ApiModel
+    template_name = "app/List_request.html"
+    context_object_name = "request_app"
+
+class SignUpPage(CreateView) :
+    form_class = forms.UserFormCustom
+    success_url = reverse_lazy('login')
+    template_name = "registration/signup.html"

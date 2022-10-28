@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'app',
     # extensions
     'crispy_forms',
+    'crispy_bootstrap5',
     'widget_tweaks',
     # django
     'django.contrib.admin',
@@ -43,9 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
-    'crispy_bootstrap5',
-    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
