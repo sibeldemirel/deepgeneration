@@ -3,7 +3,14 @@
 {% block content %}
 
 {% if code %}
-    <pre>{{code}}</pre>
+<div class = "font_code">
+    <div id = "zone">
+        <pre><textarea name="" id="" cols="" rows="25">{{code}}</textarea></pre>
+    </div>
+    <div class= "btn-group">
+        <div id="btn-copy"><button class = "btn-copier">Copier</button></div>
+    </div>
+</div>
 {% endif %}
 
 
