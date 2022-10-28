@@ -1,5 +1,5 @@
 *, ::before, ::after {
-    box-sizing: : border-box;
+    box-sizing:  border-box;
     margin: 0;
     padding: 0;
 }
@@ -25,17 +25,11 @@
     flex-grow: 1;
 }
 
-*, ::before, ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font-family: Abril fatface, sans-serif;
     height: 100vh;
     background: url('../img/fondhome2.jpg');
-    background-repeat: no-repeat repeat
+    background-repeat: no-repeat repeat;
     background-size: cover;
     position: relative;
     overflow-x: hidden;
@@ -62,11 +56,11 @@ h1 span {
 }
 
 h2 {
-    text-transform: capitalize
+    text-transform: capitalize;
     font-size: 25px;
     color: #ffffff;
     font-family: Abril fatface, sans-serif;
-    text-shadow: black 3px 3px 3px 
+    text-shadow: black 3px 3px 3px ;
 }
 
 h2 span {
