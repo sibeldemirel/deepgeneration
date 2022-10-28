@@ -1,51 +1,79 @@
 {% extends 'base_sous_pages.html' %}
 
+
 {% block content %}
-<form method="post">
-<div class = "contenu">
-        <div class = "border_contact">
-            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-2">
+<body class="contact-form">
+    <div class="container-contact100">
 
-                <!--Header-->
-                <div class="text-center">
-                    <h3 class="white-text mb-5 mt-4 font-weight-bold"><strong>CONTACT</strong> <a class="green-text font-weight-bold"><strong> </strong></a></h3>
-                </div>
+    <div class="wrap-contact100">
+    <form class="contact100-form validate-form">
 
-                <!--Body-->
-                <div class="md-form">
-                    <label for="Form-email5">Nom</label>
-                    <input type="text" id="Form-email5" class="form-control white-text">
-                </div>
+    <label class="label-input100" for="first-name">Your Name *</label>
+    <div class="wrap-input100 rs1 validate-input">
+    <input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
+    <span class="focus-input100"></span>
+    </div>
 
-                <div class="md-form">
-                    <label for="Form-pass5">Email</label>
-                    <input type="text" id="Form-pass5" class="form-control">
-                </div>
+    <div class="wrap-input100 rs1 validate-input">
+    <input class="input100" type="text" name="last-name" placeholder="Last name">
+    <span class="focus-input100"></span>
+    </div>
 
-                <div class="md-form mb-5">
-                    <label for="message5">Message</label>
-                    <textarea type="text" id="message5" name="message5" rows="2" class="form-control md-textarea white-text"></textarea>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkbox7">
-                        <label for="checkbox7" class="form-check-label white-text">Accepter notre<a href="#" class="green-text font-weight-bold"> Politique de confidentialité</a></label>
-                    </div>
-                </div>
+    <label class="label-input100" for="email">Email Address *</label>
+    <div class="wrap-input100 validate-input">
+    <input id="email" class="input100" type="text" name="email" placeholder="Eg. example@email.com">
+    <span class="focus-input100"></span>
+    </div>
 
-                <!--Grid row-->
-                <div id = "centrer-btn">
+    <label class="label-input100" for="phone">Phone Number</label>
+    <div class="wrap-input100">
+    <input id="phone" class="input100" type="text" name="phone" placeholder="Eg. +1 800 000000">
+    <span class="focus-input100"></span>
+    </div>
 
-                    <!--Grid column-->
-                   
-                        <div id ="btn-contact"><button type="button" class="btn btn-success btn-block btn-rounded z-depth-3">Envoyer</button></div>
-                    </div>
-                    <!--Grid column-->
+    <label class="label-input100" for="message">Message *</label>
+    <div class="wrap-input100 validate-input">
+    <textarea id="message" class="input100-message" name="message" placeholder="Please enter your comments..."></textarea>
+    <span class="focus-input100"></span>
+    </div>
 
-                
-                <!--Grid row-->
-
-            </div>
-        </div>
-</div>
-</form>
+    <div class="container-contact100-form-btn">
+    <button class="contact100-form-btn">
+    <span>
+    Submit
+    <i class="zmdi zmdi-arrow-right m-l-8"></i>
+    </span>
+    </button>
+    </div>
+    </form>
+    </div>
+    </div>
+    
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="vendor/select2/select2.min.js"></script>
+    
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    
+    <script src="js/main.js"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-23581568-13');
+    </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"7613a5624fb2f1ac","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.10.3","si":100}' crossorigin="anonymous"></script>
+    </body>
 
 {% endblock content %}  
