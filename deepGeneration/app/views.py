@@ -5,15 +5,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
-from . import user, generator, forms, models
-# from
+
+from .management.commands import generator, user
+from . import forms, models
 from os import getenv
 import requests
-# from .secret import token
-
-# from dotenv import load_dotenv
-# load_dotenv()
-# token = getenv(token)
 
 user = user.User()
 gen = generator.Generator(user)
@@ -23,6 +19,12 @@ def home_page(request):
     
     context = {"title" : title}
     return render(request, 'app/home.html', context = context)
+
+def articles_recent(request) :
+    title = "Articles Récents"
+    articles = models.BlogModel.objects.all()#filter(article_date= "2022-10-28")
+    context = {"title" : title, "articles" : articles}
+    return render(request, 'app/recent_articles.html', context = context)
 
 
 def getDescription(request):

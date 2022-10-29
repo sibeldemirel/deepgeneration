@@ -1,0 +1,14 @@
+{% extends 'base_sous_pages.html' %}
+
+{% block content %}
+
+{% autoescape off %}
+{% for article in articles %}
+    <section>
+        <article>
+           {{article.article.h1}}
+        </article>
+    </section>
+{% endfor %}
+{% endautoescape %}
+{% endblock content %}

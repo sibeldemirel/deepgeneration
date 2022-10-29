@@ -34,9 +34,10 @@ style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/
             <div class="form-outline mb-4">
               {% comment %} <input type="password" id="form3Example4cg" class="form-control form-control-lg" /> {% endcomment %}
               {{form.password1|add_class:'form-control'}}
+              {{form.password1.helptext}}
               <label class="form-label" for="form3Example4cg">Password</label>
               
-               {% comment %} {{form.password1.helptext}} {% endcomment %}
+               
             </div>
 
             <div class="form-outline mb-4">
