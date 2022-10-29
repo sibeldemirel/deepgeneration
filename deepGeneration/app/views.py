@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from pyexpat.errors import messages
+from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,6 +7,7 @@ from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from . import user, generator, forms, models
+from .forms import CreateUserForm
 # from
 from os import getenv
 import requests
@@ -31,7 +33,7 @@ def getDescription(request):
 def article_page(request):
     title = "Blog Generator"
     blog = request.session['blog']
-    context = {"blog" : blog, 'title' : title}
+    context = {'blog' : blog, 'title' : title}
     return render(request, 'app/article.html', context = context)
 
 def blog_page(request):
@@ -134,7 +136,26 @@ class ModelListView(LoginRequiredMixin,ListView) :
     template_name = "app/List_request.html"
     context_object_name = "request_app"
 
-class SignUpPage(CreateView) :
-    form_class = forms.UserFormCustom
-    success_url = reverse_lazy('login')
-    template_name = "registration/signup.html"
+def signup_page(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Le compte a été crée pour' + user)
+            return redirect('url_login')
+        else:
+            return redirect('url_home')
+
+    context = {'form':form}
+    return render(request, 'registration/signup.html', context)
+
+def login_page(request):
+    context = {}
+    return render(request, 'accounts/login.html', context)
+
+
+
+

@@ -12,7 +12,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/compiled-4.20.0.min.css">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abril+Fatface" />
-<link href="../static/css/style.css" rel="stylesheet">
+
+{% load static %}
+<link href={% static 'css/style.css'%} rel="stylesheet">
 
 
 
@@ -20,7 +22,9 @@
     <title>{{title}}</title>
 </head>
 <body>
-    {% block header %}{% endblock header %}
+    {% block header %}
+        {% comment %} <div id="icon-login"><a  href={% url 'url_login' %}>Se connecter</a></div> {% endcomment %}
+    {% endblock header %}
     <div class="content">
     {% block nav %} {% endblock nav %}
     {% block content %} {% endblock content %}
