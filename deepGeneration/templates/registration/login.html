@@ -21,7 +21,7 @@
 			width: 400px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: rgba(0, 0, 0, 0.800);
+			background: rgba(0, 0, 0, 0.900);
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -86,7 +86,7 @@
 				</div>
 				<div class="d-flex justify-content-center form_container">
 					<form method="POST" action="">
-            {% csrf_token %}
+            		{% csrf_token %}
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
@@ -106,10 +106,14 @@
 					</form>
 
 				</div>
-		
+				
+				{% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}
+
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Vous n'avez pas de compte? <a href="{% url 'url_signup' %}" class="ml-2">Créer un compte</a>
+						Vous n'avez pas de compte ? <a href="{% url 'url_signup' %}" class="ml-2">Créer un compte</a>
 					</div>
 			
 				</div>

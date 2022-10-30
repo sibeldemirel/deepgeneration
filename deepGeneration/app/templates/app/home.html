@@ -4,6 +4,13 @@
 {% block content %}
 
 
+{% if user.is_authenticated %}
+<div style="color: white;">
+    <span>{{request.user}}</span>
+    <span><a href="{% url 'logout' %}"></a></span>
+</div>
+{% endif %}
+
 <div class="container-first">
      <h1><span>D</span><span>e</span><span>e</span><span>p</span> <span>Generator</span></h1> <br>
      <div>

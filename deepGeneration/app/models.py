@@ -21,3 +21,5 @@ class BlogModel(models.Model):
         null=False,
     )
     # date = 
+
+

@@ -1,5 +1,9 @@
-from pyexpat.errors import messages
+import email
+from django.contrib import messages
 from django.shortcuts import redirect, render
+
+from django.contrib.auth import authenticate, login, logout
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -8,7 +12,9 @@ from django.views.generic import ListView
 from django.urls import reverse_lazy
 from . import user, generator, forms, models
 from .forms import CreateUserForm
+
 # from
+
 from os import getenv
 import requests
 # from .secret import token
@@ -136,6 +142,19 @@ class ModelListView(LoginRequiredMixin,ListView) :
     template_name = "app/List_request.html"
     context_object_name = "request_app"
 
+# def signup_page(request):
+#     form = CreateUserForm()
+
+#     if request.method == 'POST':
+#         form = CreateUserForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=True)
+#             messages.success(request, "Registration successful." )
+#             return redirect("url_home")
+#         messages.error(request, "Unsuccessful registration. Invalid information.")
+#     form = CreateUserForm()
+#     return render (request=request, template_name="registration/signup.html", context={'form':form})
+
 def signup_page(request):
     form = CreateUserForm()
 
@@ -143,18 +162,38 @@ def signup_page(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Le compte a été crée pour' + user)
-            return redirect('url_login')
-        else:
-            return redirect('url_home')
-
+            messages.success(request, 'Votre compte a été crée avec succès !')
+            
+            return redirect('login')
+            
     context = {'form':form}
-    return render(request, 'registration/signup.html', context)
+    return render (request=request, template_name="registration/signup.html", context=context)
+
+   
 
 def login_page(request):
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = uthenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)
+
+            return redirect('url_home')
+        else:
+            messages.info(request, "L'adresse email ou le mot de passe est incorrecte")
+            
+
     context = {}
     return render(request, 'accounts/login.html', context)
+
+
+def logout_page(request):
+    logout(request)
+    return redirect('login')
 
 
 

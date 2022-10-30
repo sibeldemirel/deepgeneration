@@ -13,5 +13,6 @@ urlpatterns = [
     path('special/', views.special_page, name = 'url_special'),
     path('list/', views.ModelListView.as_view(), name = 'url_requestsList'),
     path('signup/', views.signup_page, name = 'url_signup'),
-    path('login/', views.login_page, name = 'url_login'),
+    path('login/', views.login_page, name = 'login'),
+    path('logout/', views.logout_page, name = 'logout'),
 ]

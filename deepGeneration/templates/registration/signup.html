@@ -20,7 +20,7 @@
 			width: 400px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: rgba(0, 0, 0, 0.800);
+			background: rgba(0, 0, 0, 0.900);
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -109,7 +109,7 @@
 				   		</div>
 					</form>
 				</div>
-		
+				{{form.errors}}
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
 						Vous avez déjà un compte ? <a href="{% url 'login' %}" class="ml-2">Se connecter</a>
@@ -124,14 +124,7 @@
 		 */
 
 		//Query All input fields
-		var form_fields = document.getElementsByTagName('input')
-		form_fields[1].placeholder='Nom..';
-		form_fields[2].placeholder='Email..';
-		form_fields[3].placeholder='Mot de passe..';
-		form_fields[4].placeholder='Confirmer mot de passe ..';
-
-
-		for (var field in form_fields)
-    {	form_fields[field].className += ' form-control'}
+		
 	</script>
-{% endblock content%}
+{% endblock content%} 
+

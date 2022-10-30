@@ -51,3 +51,4 @@ class User :
 
     def deleteArticle(self, articles):
         self.__articles.pop(articles)
+
