@@ -174,17 +174,17 @@ def signup_page(request):
 def login_page(request):
 
     if request.method == 'POST':
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = uthenticate(request, email=email, password=password)
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
 
             return redirect('url_home')
         else:
-            messages.info(request, "L'adresse email ou le mot de passe est incorrecte")
+            messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
             
 
     context = {}

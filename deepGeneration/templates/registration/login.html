@@ -86,12 +86,14 @@
 				</div>
 				<div class="d-flex justify-content-center form_container">
 					<form method="POST" action="">
-            		{% csrf_token %}
+
+            			{% csrf_token %}
+
 						<div class="input-group mb-3">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="email" name="email" placeholder="Email..." class="form-control">
+							<input type="text" name="username" placeholder="Nom.." class="form-control">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
@@ -110,6 +112,11 @@
 				{% for message in messages %}
 					<p id="messages">{{message}}</p>
 				{% endfor %}
+
+				{% if form.errors %}
+        			<p>Votre nom d'utilisateur et votre mot de  passe ne correspondent pas. Veuillez réessayer.</p>
+        		{% endif %}
+
 
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">

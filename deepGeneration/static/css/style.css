@@ -26,6 +26,12 @@ a:active, a:focus {
     color: purple;
 }
 
+#blog-log{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 body {
     font-family: Abril fatface, sans-serif;

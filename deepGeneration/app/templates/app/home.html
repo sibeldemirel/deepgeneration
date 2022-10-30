@@ -1,13 +1,16 @@
 
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 
 
 {% if user.is_authenticated %}
-<div style="color: white;">
-    <span>{{request.user}}</span>
-    <span><a href="{% url 'logout' %}"></a></span>
+<div id="bloc-log">
+    <div style = "color : green; background: white; min-width:100px; padding:5px; border-radius: 5px;">
+        <span>{{request.user}} est connecté</span> 
+    </div>
+    <div style="margin-top: 10px;"><a href="{% url 'logout' %}"><button>Déconnexion</button></a></div>
 </div>
 {% endif %}
 
