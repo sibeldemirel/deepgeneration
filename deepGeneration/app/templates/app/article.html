@@ -4,8 +4,11 @@
 
 <div class = "font_article">
 {% autoescape off %}
-    {{blog}}
+    {{article}}
 {% endautoescape %}
+{% if image %}
+    {{image}}
+{% endif %}
 </div>
 
 {% endblock content %}
