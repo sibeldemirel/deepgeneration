@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class ApiForm(forms.ModelForm):
     class Meta:
-        model = models.ApiModel
+        model = models.FormModel
         fields = "__all__"
     
 class UserFormCustom(UserCreationForm):

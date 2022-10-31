@@ -1,7 +1,18 @@
 {% extends 'base_sous_pages.html' %}
 
 {% block contain %}
-<h1> profil </h1>
+<h1> Bienvenue {{user.username}} </h1>
 
 <a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
+
+{% comment %} {% for request in requests_app  %}
+     {{request.desciption}}
+{% endfor %} {% endcomment %}
+
+<h2> Liste des Images </h2>
+
+<h2> Liste des Articles </h2>
+
+<h2> Liste des Codes </h2>
+
 {% endblock contain %}

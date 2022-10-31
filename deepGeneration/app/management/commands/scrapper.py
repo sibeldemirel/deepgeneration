@@ -6,7 +6,7 @@ import requests
 from datetime import date
 from .generator import Generator
 from .user import User
-from ...models import BlogModel
+from ...models import ImageModel, ArticleModel
 # from . import scrapping
 
 
@@ -114,8 +114,10 @@ def generateArticles(url):
                 time.sleep(20)
         else :
             idx_theme+=1
-            blog = BlogModel(title=titlesList[idx_theme],description=descriptionsList[idx_theme],article=article, scrap_date=date.today(), url_image=url_image)
-            blog.save()
+            article= ArticleModel(title=titlesList[idx_theme],description=descriptionsList[idx_theme],article=article, generating_date=date.today())
+            image= ImageModel(description=descriptionsList[idx_theme],generating_date=date.today(), url_image=url_image)
+            article.save()
+            image.save()
             print(idx_theme)
 
 

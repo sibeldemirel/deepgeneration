@@ -9,7 +9,6 @@ from django.urls import reverse_lazy
 from .management.commands import generator, user
 from . import forms, models
 from os import getenv
-import requests
 
 user = user.User()
 gen = generator.Generator(user)
@@ -84,36 +83,16 @@ def code_page(request):
             context = {"title" : title, 'form' : form}
             return render(request, 'app/form.html', context = context)
 
-    
-# from django.shortcuts import render, redirect
-# from django.contrib.auth.forms import UserCreationForm
-# from django.contrib.auth import login, authenticate
-# from django.contrib import messages
-
-# def register(request):
-# 	if request.method == 'POST' :
-# 		form = UserCreationForm(request.POST)
-# 		if form.is_valid():
-# 			form.save()		
-# 			username = form.cleaned_data.get('username')
-# 			password = form.cleaned_data.get('password1')
-# 			user = authenticate(username=username, password=password)
-# 			login(request,user)	
-# 			messages.success(request, f'Coucou {username}, Votre compte a été créé avec succès !')					
-# 			return redirect('home')
-# 	else :
-# 		form = UserCreationForm()
-# 	return render(request,'registration/register.html',{'form' : form})
 
 @login_required
-def special_page(request) :
-    title = "special"
+def profil_page(request) :
+    title = "Espace Personnelle"
     context = {"title" : title}
-    return render(request, 'app/special_page.html', context = context)
+    return render(request, 'registration/profil.html', context = context)
 
 
 class ModelListView(LoginRequiredMixin,ListView) :
-    model = models.ApiModel
+    model = models.FormModel
     template_name = "app/List_request.html"
     context_object_name = "request_app"
 
