@@ -1,0 +1,7 @@
+{% extends 'base_sous_pages.html' %}
+
+{% block contain %}
+<h1> profil </h1>
+
+<a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
+{% endblock contain %}

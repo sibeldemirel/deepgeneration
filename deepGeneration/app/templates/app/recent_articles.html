@@ -2,15 +2,21 @@
 
 {% block content %}
 
+<section>
+<ul>
 {% autoescape off %}
 {% for article in articles %}
-    <section>
+        <li>
         <article class = "font_article">>
-            <h1> {{article.title}} </h1>
-           {{article.article}}
-           <div class = "image_gen"><img src={{article.image}}>
+            <div>
+            <h2> {{article.title}} </h2>
+            <p> {{article.description}} </p>
+            <a href={% url 'url_test' %}><img src={{article.image}} alt={{article.title}}></a>
+            </div>
         </article>
-    </section>
+        </li>
 {% endfor %}
 {% endautoescape %}
+</ul>
+</section>
 {% endblock content %}
