@@ -5,24 +5,28 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
-from . import user, generator, forms, models
-# from
+
+from .management.commands import generator, user
+from . import forms, models
 from os import getenv
 import requests
-# from .secret import token
-
-# from dotenv import load_dotenv
-# load_dotenv()
-# token = getenv(token)
 
 user = user.User()
 gen = generator.Generator(user)
 
 def home_page(request):
     title = "Accueil"
-    
     context = {"title" : title}
     return render(request, 'app/home.html', context = context)
+
+def articles_recent(request) :
+    title = "Articles Récents"
+    articles = models.BlogModel.objects.all()#filter(article_date= "2022-10-28")
+    # request.session['article'] = article
+    # request.session['title'] = title
+    # request.session['image'] = image  
+    context = {"title" : title, "articles" : articles}
+    return render(request, 'app/recent_articles.html', context = context)
 
 
 def getDescription(request):
@@ -32,20 +36,21 @@ def getDescription(request):
         return description
 
 def article_page(request):
-    title = "Blog Generator"
-    blog = request.session['blog']
-    context = {"blog" : blog, 'title' : title}
+    title = request.session['title']
+    article = request.session['article']
+    context = {"article" : article, 'title' : title}
     return render(request, 'app/article.html', context = context)
 
-def blog_page(request):
-    title = "Blog Generator"
+def code_article_page(request):
+    title = "Article Generator"
     if request.method =="POST" :
         # form.save()
         description = getDescription(request)
-        blog = gen.generateArticle(description)
-        request.session['blog'] = blog
-        context = {"title" : title, 'blog' : blog}
-        return render(request, 'app/blog.html', context = context)
+        article = gen.generateArticle(description)
+        request.session['article'] = article
+        request.session['title'] = title
+        context = {"title" : title, 'article' : article}
+        return render(request, 'app/code_article.html', context = context)
     else :
             form = forms.ApiForm()
             context = {"title" : title, 'form' : form}

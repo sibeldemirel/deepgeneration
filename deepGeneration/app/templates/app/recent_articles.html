@@ -1,0 +1,22 @@
+{% extends 'base_sous_pages.html' %}
+
+{% block content %}
+
+<section>
+<ul>
+{% autoescape off %}
+{% for article in articles %}
+        <li>
+        <article class = "font_article">>
+            <div>
+            <h2> {{article.title}} </h2>
+            <p> {{article.description}} </p>
+            <a href={% url 'url_test' %}><img src={{article.image}} alt={{article.title}}></a>
+            </div>
+        </article>
+        </li>
+{% endfor %}
+{% endautoescape %}
+</ul>
+</section>
+{% endblock content %}

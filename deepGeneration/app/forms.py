@@ -10,5 +10,3 @@ class ApiForm(forms.ModelForm):
 class UserFormCustom(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         fields = "__all__"
-
-
