@@ -91,6 +91,36 @@ def profil_page(request) :
     return render(request, 'registration/profil.html', context = context)
 
 
+def contact_page(request):
+    title = "Contact"
+    context = {"title" : title}
+    return render(request, 'app/contact.html', context = context)
+
+    
+def login_page(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+
+            return redirect('url_home')
+        else:
+            messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
+            
+
+    context = {}
+    return render(request, 'accounts/login.html', context)
+
+
+def logout_page(request):
+    logout(request)
+    return redirect('login')
+
 class ModelListView(LoginRequiredMixin,ListView) :
     model = models.FormModel
     template_name = "app/List_request.html"
