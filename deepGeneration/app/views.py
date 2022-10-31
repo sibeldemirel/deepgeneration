@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
+from django.contrib.auth import authenticate, login, logout
 
 from .management.commands import generator, user
 from . import forms, models
@@ -20,7 +21,7 @@ def home_page(request):
 
 def articles_recent(request) :
     title = "Articles Récents"
-    articles = models.BlogModel.objects.all()#filter(article_date= "2022-10-28")
+    articles = models.ArticleModel.objects.all()#filter(article_date= "2022-10-28") # ajouter filtre date utilisateur
     # request.session['article'] = article
     # request.session['title'] = title
     # request.session['image'] = image  

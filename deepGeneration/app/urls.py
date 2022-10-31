@@ -13,4 +13,5 @@ urlpatterns = [
     path('list/', views.ModelListView.as_view(), name = 'url_requestsList'),
     path('signUp/', views.SignUpPage.as_view(), name = 'url_signUp'),
     path('recent/', views.articles_recent, name = 'url_blog'),
+    path('contact/', views.contact_page, name = 'url_contact'),
 ]
