@@ -5,11 +5,16 @@
 {% autoescape off %}
 {% for article in articles %}
     <section>
+    <ul>
+        <li>
         <article class = "font_article">>
+            <div>
             <h1> {{article.title}} </h1>
-           {{article.article}}
-           <div class = "image_gen"><img src={{article.image}}>
+            <a href={% url 'url_test' %}><img src={{article.image}} alt={{article.title}}></a>
+            </div>
         </article>
+        </li>
+    </ul>
     </section>
 {% endfor %}
 {% endautoescape %}

@@ -12,18 +12,29 @@ class ApiModel(models.Model):
 
 
 class BlogModel(models.Model):
+
+    title = models.CharField(
+        max_length=500,
+        blank=False,
+        null=False,
+    )
+
     description = models.TextField(
-        # max_length=500,
         blank=False,
         null=False,
     )
 
     article = models.TextField(
-        # max_length=500,
         blank=False,
         null=False,
     )
 
-    article_date = models.DateTimeField()
+    # article_date = models.DateTimeField()
     
-    # scrap_date = datetime
+    scrap_date = models.DateTimeField()
+
+    url_image = models.URLField(
+        max_length=500,
+        blank=False,
+        null=False,
+    )

@@ -293,8 +293,9 @@ textarea{
     padding: 15px;
     width:90%;
     height: 100%;
- 
 }
+
+
 
 .font_code{
     padding: 1.5%;
@@ -305,6 +306,4 @@ textarea{
     display: flex;
     flex-direction: column;
     justify-content: start;
-    
- 
 }

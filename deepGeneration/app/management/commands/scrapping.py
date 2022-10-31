@@ -8,7 +8,6 @@ from .generator import Generator
 from .user import User
 from ...models import BlogModel
 
-
 getTexts = lambda l : [b.getText(strip = True) for b in l]
 
 NYTurl = "https://www.nytimes.com/section/world"
@@ -18,17 +17,22 @@ user = User()
 gen = Generator(user)
 
 
-def getHtml(url) :
+def getHtml(url):
     page = requests.get(url)
     if not page.ok :
         raise Exception('Failed to load page {}'.format(page.status_code))
     html = BeautifulSoup(page.text, 'html.parser')  
     return html
 
-def getThemes(html) :
+def getTitles(html):
+    brutList = html.find_all('h2', class_ = "css-14g652u e1y0a3kv0")
+    titlesList = getTexts(brutList)
+    return titlesList
+
+def getDescription(html) :
     brutList = html.find_all('p', class_ = "css-1pga48a e15t083i1")
-    themesList = getTexts(brutList)
-    return themesList
+    descriptionsList = getTexts(brutList)
+    return descriptionsList
 
 def getDates(html) :
     brutList = html.find_all('div', class_="css-agsgss e15t083i3")
@@ -68,79 +72,42 @@ def getDates(html) :
     brutList = html.find_all('div', class_="css-agsgss")
     for div in brutList :
         print(div)
-        # scrap_date = div.span.getText(strip = True)
-        # article_date = modifyDate(scrap_date)
+        # article_date = div.span.getText(strip = True)
+        # article_date = modifyDate(article_date)
         # datesList.append(article_date)
     return datesList
-
-    
-
-
-
-# def generateArticles(url):
-#     html = getHtml(url)
-#     themesList = getThemes(html)
-#     # datesList = getDates(html)
-#     articles = []
-#     idx_theme = 0
-#     blog = BlogModel()
-#     while idx_theme < len(themesList):
-#         try :
-#             article = gen.generateArticle(themesList[idx_theme])
-#             articles.append(article)
-#             idx_theme+=1
-#             blog.description = themesList[idx_theme]
-#             # blog.article_date = datesList[idx_theme]
-#             blog.article = article
-#             blog.scrap_date = date.today()
-#             blog.save()
-#             print("idx_theme")
-#         except requests.exceptions.HTTPError :
-#             erreur = sys.exc_info()
-#             msgerr = u"%s" % (erreur[1])
-#             codeErreur = msgerr.split(' ')[0]
-#             if (codeErreur == '400') :
-#                 print('400')
-#                 themesList[idx_theme] = gen.generateSummarization(themesList[idx_theme])
-#             elif (codeErreur == '429') :
-#                 print('429')
-#                 time.sleep(20)
-#     return articles
 
 
 def generateArticles(url):
     html = getHtml(url)
-    themesList = getThemes(html)
-    # datesList = getDates(html)
-    articles = []
+    descriptionsList = getDescription(html)
+    titlesList = getTitles(html)
+    # articles_datesList = getDates(html)
     idx_theme = 0
-    while idx_theme < len(themesList):
+    a=0
+    while idx_theme < len(descriptionsList):
         try :
-            article = gen.generateArticle(themesList[idx_theme])
-            articles.append(article)
-            idx_theme+=1
-            blog = BlogModel(description = themesList[idx_theme],article = article, article_date = date.today())
-            blog.save()
-            # blog.article_date = datesList[idx_theme]
-            print("idx_theme")
+            if a==0:
+                article = gen.generateArticle(descriptionsList[idx_theme])
+                a=1
+                url_image = gen.generateImage(descriptionsList[idx_theme])
+                a=0
+            else:
+                image = gen.generateImage(descriptionsList[idx_theme])
+                a=0
+            
         except requests.exceptions.HTTPError :
             erreur = sys.exc_info()
             msgerr = u"%s" % (erreur[1])
             codeErreur = msgerr.split(' ')[0]
             if (codeErreur == '400') :
                 print('400')
-                themesList[idx_theme] = gen.generateSummarization(themesList[idx_theme])
+                descriptionsList[idx_theme] = gen.generateSummarization(descriptionsList[idx_theme])
             elif (codeErreur == '429') :
                 print('429')
                 time.sleep(20)
-    return articles
-
-
-
-
-if __name__ == '__main__':
-    url = NYTurl
-    articles = generateArticles(url)
-
- 
-    
+        else :
+            idx_theme+=1
+            blog = BlogModel(title=titlesList[idx_theme],description=descriptionsList[idx_theme],article=article, scrap_date=date.today(), url_image=url_image)
+            blog.save()
+            print(idx_theme)
