@@ -18,12 +18,16 @@
 </head>
 <body>
     {% block header %}{% endblock header %}
+
     <div class="content">
+
     {% block nav %} {% endblock nav %}
     {% block content %} {% endblock content %}
     </div>
+
+
     {% include 'includes/footer.html' %}
-    
+
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="../static/js/app.js"></script>

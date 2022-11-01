@@ -1,7 +1,7 @@
 {% extends 'base_sous_pages.html' %}
 
-{% block contain %}
-<h1> Bienvenue {{user.username}} </h1>
+{% block content %}
+<h1> Bienvenue <span>{{user.get_username}}</span> </h1>
 
 <a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
 
@@ -15,4 +15,4 @@
 
 <h2> Liste des Codes </h2>
 
-{% endblock contain %}
+{% endblock content %}

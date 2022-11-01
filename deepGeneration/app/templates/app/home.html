@@ -13,13 +13,14 @@
      </div>
      <div class="container-btns">
          <div><button class="btn-first b2"><a href={% url 'url_blog' %}>Blog</a></button></div>
-         {% if user.is_authentificated %}
-         <div><button class="btn-first b2"><a href={% url 'url_image' %}>Image</a></button></div>
-         <div><button class="btn-first b2"><a href={% url 'url_codeArticle' %}>Article</a></button></div>
-         <div><button class="btn-first b2"><a href={% url 'url_code' %}>Code</a></button></div>
+         {% if user.is_authenticated %}
+            <div><button class="btn-first b2"><a href={% url 'url_image' %}>Image</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'url_codeArticle' %}>Article</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'url_code' %}>Code</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'url_profil' %}>Espace Perso</a></button></div>
          {% else %}
-         <div><button class="btn-first b2"><a href={% url 'url_signUp' %}>Inscription</a></button></div>
-         <div><button class="btn-first b2"><a href={% url 'login' %}>Connexion</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'url_signUp' %}>Inscription</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'login' %}>Connexion</a></button></div>
          {% endif %}
      </div>
  </div>

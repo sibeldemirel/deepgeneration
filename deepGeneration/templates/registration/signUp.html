@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_sous_pages.html' %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -12,7 +12,7 @@
         <div class="card-body p-5 gradient-custom-3">
           <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-          <form method='POST'>
+          <form method='POST' action="{% url 'url_signUp' %}">
             {% csrf_token %}
 
             <div class="form-outline mb-4">
@@ -44,7 +44,7 @@
             <div class="form-check d-flex justify-content-center mb-5">
               <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
               <label class="form-check-label" for="form2Example3g">
-                I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                I agree all statements in <a href="https://www.iubenda.com/privacy-policy/66359748" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Politique de confidentialité ">Politique de confidentialité</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
               </label>
             </div>
 

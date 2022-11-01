@@ -98,24 +98,29 @@ def contact_page(request):
     return render(request, 'app/contact.html', context = context)
 
     
-def login_page(request):
+# def login_page(request):
 
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+#         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
+#         if user is not None:
+#             login(request, user)
 
-            return redirect('url_home')
-        else:
-            messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
+#             return redirect('url_home')
+#         else:
+#             # messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
+#             pass
+
+# def login(request):
+#     is_authenticated = request.user.is_authenticated()
+#     user = request.user
+#     request.session['is_authenticated'] = request.user.is_authenticated()
+#     context = {"is_authenticated" : is_authenticated, "user" : user}
+#     return render(request,'registration/login.html')
             
-
-    context = {}
-    return render(request, 'accounts/login.html', context)
 
 
 def logout_page(request):
@@ -128,6 +133,13 @@ class ModelListView(LoginRequiredMixin,ListView) :
     context_object_name = "request_app"
 
 class SignUpPage(CreateView) :
+
+    def get_context_data(self, **kwargs):
+        title = 'Inscription'
+        context = super().get_context_data(**kwargs)
+        context['title'] = title
+        return context
+
     form_class = forms.UserFormCustom
     success_url = reverse_lazy('login')
     template_name = "registration/signUp.html"
