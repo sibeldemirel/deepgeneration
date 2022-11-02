@@ -17,7 +17,10 @@
 			height: 100%;
 		}
 		.user_card {
-			width: 400px;
+      min-width: 400px;
+      min-height: 1500px
+			width: 37%;
+      height: 65%;
 			margin-top: auto;
 			margin-bottom: auto;
 			background: rgba(0, 0, 0, 0.900);
@@ -34,8 +37,17 @@
 
 		}
 
+    .check3 {
+      margin-left: 19px;
+    }
+
+    #accept {
+      margin-left: 4px;
+      margin-right: 12px;
+    }
+
 		.form_container {
-			margin-top: 20px;
+			margin-top: 8%;
 		}
 
 		#form-title{
@@ -51,7 +63,7 @@
 			outline: 0px !important;
 		}
 		.login_container {
-			padding: 0 2rem;
+			padding: 0 7rem;
 		}
 		.input-group-text {
 			background:  #0997d1  !important;
@@ -81,7 +93,7 @@
 						
 						{% csrf_token %}
 
-						<div class="input-group mb-3">
+						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
@@ -99,17 +111,17 @@
 							</div>
 							{{form.password1|add_class:"form-control"}}
 						</div>
-						<div class="input-group mb-2">
+						<div class="input-group mb-4">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
 							{{form.password2|add_class:"form-control"}}
 						</div>
 
-            <div class="form-check d-flex justify-content-center mb-5">
+            <div class="input-group mb-3 check3">
               <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
               <label class="form-check-label" for="form2Example3g">
-                J'accepte <a href="https://www.iubenda.com/privacy-policy/66359748" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Politique de confidentialité ">Politique de confidentialité</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+                <span id='accept'>J'accepte </span>  <a href="https://www.iubenda.com/privacy-policy/66359748" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Politique de confidentialité ">Politique de confidentialité</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
               </label>
             </div>
 
