@@ -45,9 +45,9 @@ body {
     flex-direction: column;
 }
 
-main{
+/* main{
     flex-grow: 1;
-}
+} */
 
 .border_contact{
     box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884);
