@@ -13,7 +13,7 @@ urlpatterns = [
     path('list/', views.ModelListView.as_view(), name = 'url_requestsList'),
     path('signup/', views.SignUpPage.as_view(), name = 'url_signUp'),
     # path('login/', views.login_page, name = 'login'),
-    path('logout/', views.logout_page, name = 'logout'),
+    # path('logout/', views.logout_page, name = 'logout'),
     path('recent/', views.articles_recent, name = 'url_blog'),
     path('contact/', views.contact_page, name = 'url_contact'),
 ]
