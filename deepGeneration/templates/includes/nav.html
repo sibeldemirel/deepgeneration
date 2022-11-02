@@ -1,12 +1,43 @@
+
 <ul class="medias">
+    {% url 'url_blog' as url_blog %}
     <li class="bulle"><a  href={% url 'url_home' %}>Accueil</a></li>
-    <li class="bulle"><a  href={% url 'url_image' %}>Image</a></li>
-    <li class="bulle"><a  href={% url 'url_blog' %}>Blog</a></li>
-    <li class="bulle"><a  href={% url 'url_code' %}>Code</a></li>
-    {% if user.is_authentificated %}
-    <li class="bulle"><span>{{user.get_username}}</span></li>
-    <li class="bulle"><a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a></li>
+    {% if request.path != url_blog %}
+        <li class="bulle"><a  href={% url 'url_blog' %}>Blog</a></li>
+    {% endif %}
+
+    {% if user.is_authenticated %}        
+        {% if request.method == "POST" %}
+            <li class="bulle"><a  href={% url 'url_image' %}>Image</a></li>
+            <li class="bulle"><a  href={% url 'url_codeArticle' %}>Article</a></li>
+            <li class="bulle"><a  href={% url 'url_code' %}>Code</a></li>
+        {% elif request.method == "GET" %}
+            {% url 'url_image' as url_image %}
+            {% url 'url_codeArticle' as url_codeArticle %}
+            {% url 'url_code' as url_code %}
+            {% if request.path != url_image %}
+                <li class="bulle"><a  href={% url 'url_image' %}>Image</a></li>
+            {% endif %}
+            {% if request.path != url_codeArticle %}
+            <li class="bulle"><a  href={% url 'url_codeArticle' %}>Article</a></li>
+            {% endif %}
+            {% if request.path != url_code %}
+            <li class="bulle"><a  href={% url 'url_code' %}>Code</a></li>
+            {% endif %}
+        {% endif %}
+        {% comment %} {% url 'url_profil' as url_profil %}
+        {% if request.path != url_profil %}
+            <li class="bulle"><a  href={% url 'url_profil'%}>Espace <br> Perso</a></li>
+        {% endif %} {% endcomment %}
     {% else %}
-    <li class="bulle"><a  href={% url 'login' %}>Connexion</a></li>
+        {% url 'url_signUp' as url_signUp %}
+        {% url 'login' as login %}
+        {% if request.path != url_signUp %}
+            <li class="bulle"><a href={% url 'url_signUp' %}>Inscription</a></li>
+        {% endif %}
+        
+        {% if request.path !=  login %}
+            <li class="bulle"><a href={% url 'login' %}>Connexion</a></li>
+        {% endif %}
     {% endif %}
 </ul>

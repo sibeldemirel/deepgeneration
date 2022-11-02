@@ -1,4 +1,3 @@
-
 import nlpcloud
 
 class Generator :
@@ -39,3 +38,5 @@ class Generator :
     def generateSummarization(self, description) :
         self.setModel(Generator.accuracyModel)
         return self.getClient().summarization(description)['summary_text']
+
+    

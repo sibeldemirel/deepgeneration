@@ -1,9 +1,22 @@
 
 {% extends 'base.html' %}
-{% load static %}
+
+{% block header %}
+{% if user.is_authenticated %}
+<div id="bloc-log">
+
+        <div style = "font-size: 20px; color: green;"> Bienvenue,  {{request.user}}</div> 
+        <div>
+            <button type="button" class="btn btn-primary" style = "padding:10px; font-weight: bold"><a href={% url 'logout' %}>Déconnexion </a></button>
+        </div>
+</div>
+{% endif %}
+{% endblock header %}
+
+
 {% block content %}
 
-
+<div class="container-fluid">
 <div class="container-first">
      <h1><span>D</span><span>e</span><span>e</span><span>p</span> <span>Generator</span></h1> <br>
      <div>
@@ -12,12 +25,19 @@
                   Avec DeepGenerator, vous pourrez réaliser tout cela en quelques clics ! </p></span></h2>
      </div>
      <div class="container-btns">
-         <div><button class="btn-first b2"><a href={% url 'url_image' %}>Image</a></button></div>
          <div><button class="btn-first b2"><a href={% url 'url_blog' %}>Blog</a></button></div>
-         <div><button class="btn-first b2"><a href={% url 'url_code' %}>Code</a></button></div>
+         {% if user.is_authenticated %}
+            <div><button class="btn-first b2"><a href={% url 'url_image' %}>Image</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'url_codeArticle' %}>Article</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'url_code' %}>Code</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'url_profil' %}>Espace Perso</a></button></div>
+         {% else %}
+            <div><button class="btn-first b2"><a href={% url 'url_signUp' %}>Inscription</a></button></div>
+            <div><button class="btn-first b2"><a href={% url 'login' %}>Connexion</a></button></div>
+         {% endif %}
      </div>
  </div>
+</div>
 
 
- 
 {% endblock content %}  

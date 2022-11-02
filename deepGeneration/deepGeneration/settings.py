@@ -31,12 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # mes apps
-    'app',
-    # extensions
-    'crispy_forms',
-    'crispy_bootstrap5',
-    'widget_tweaks',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     # mes apps
+    'app',
+    # extensions
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +86,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -134,5 +135,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = 'url_home'
 #/profil par defaut

@@ -1,0 +1,18 @@
+{% extends 'base_sous_pages.html' %}
+
+{% block content %}
+<h1> Bienvenue <span>{{user.get_username}}</span> </h1>
+
+<a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
+
+{% comment %} {% for request in requests_app  %}
+     {{request.desciption}}
+{% endfor %} {% endcomment %}
+
+<h2> Liste des Images </h2>
+
+<h2> Liste des Articles </h2>
+
+<h2> Liste des Codes </h2>
+
+{% endblock content %}
