@@ -1,21 +1,17 @@
 import string
-import os
-from dotenv import load_dotenv
-load_dotenv()
-# TOKEN = os.getenv("TOKEN")
-TOKEN = "f27c25c9364eb17c5fb56f5f9f27f44615f7f35a"
+from .secret import token
 # from django.contrib.auth.models import User
 
 # User.Object.create_user('john','ttt','ttt')
 
 class User :
 
-    defaultToken = TOKEN
+    defaultToken = token
     defaultLanguage = 'en'
 
     def __init__(self, token=defaultToken) :
         self.__userLanguage = User.defaultLanguage
-        self.__token = TOKEN
+        self.__token = token
         self.__imgs_url = [string]
         self.__codes = [string]
         self.__articles = [string]
@@ -55,4 +51,3 @@ class User :
 
     def deleteArticle(self, articles):
         self.__articles.pop(articles)
-

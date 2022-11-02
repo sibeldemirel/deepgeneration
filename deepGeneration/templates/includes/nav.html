@@ -1,3 +1,4 @@
+
 <ul class="medias">
     {% url 'url_blog' as url_blog %}
     <li class="bulle"><a  href={% url 'url_home' %}>Accueil</a></li>
@@ -24,16 +25,17 @@
             <li class="bulle"><a  href={% url 'url_code' %}>Code</a></li>
             {% endif %}
         {% endif %}
-        {% url 'url_profil' as url_profil %}
+        {% comment %} {% url 'url_profil' as url_profil %}
         {% if request.path != url_profil %}
             <li class="bulle"><a  href={% url 'url_profil'%}>Espace <br> Perso</a></li>
-        {% endif %}
+        {% endif %} {% endcomment %}
     {% else %}
         {% url 'url_signUp' as url_signUp %}
+        {% url 'login' as login %}
         {% if request.path != url_signUp %}
             <li class="bulle"><a href={% url 'url_signUp' %}>Inscription</a></li>
         {% endif %}
-        {% url 'url_signUp' as login %}
+        
         {% if request.path !=  login %}
             <li class="bulle"><a href={% url 'login' %}>Connexion</a></li>
         {% endif %}

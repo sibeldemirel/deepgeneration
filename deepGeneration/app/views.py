@@ -1,15 +1,22 @@
-from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
-from django.contrib.auth import authenticate, login, logout
-
+from . import user, generator, forms, models
 from .management.commands import generator, user
-from . import forms, models
+from .forms import UserFormCustom
+
+
 from os import getenv
+import requests
+# from .secret import token
+
+
+from . import forms, models
 
 user = user.User()
 gen = generator.Generator(user)
@@ -45,11 +52,12 @@ def code_article_page(request):
     title = "Article Generator"
     if request.method =="POST" :
         # form.save()
-        description = getDescription(request)
+        description = getDescription(request)   
         article = gen.generateArticle(description)
+        request.session['blog'] = article
+        context = {"title" : title, 'article' : article}
         request.session['article'] = article
         request.session['title'] = title
-        context = {"title" : title, 'article' : article}
         return render(request, 'app/code_article.html', context = context)
     else :
             form = forms.ApiForm()
@@ -97,6 +105,7 @@ def contact_page(request):
     context = {"title" : title}
     return render(request, 'app/contact.html', context = context)
 
+
     
 # def login_page(request):
 
@@ -143,3 +152,48 @@ class SignUpPage(CreateView) :
     form_class = forms.UserFormCustom
     success_url = reverse_lazy('login')
     template_name = "registration/signUp.html"
+
+
+# def signup_page(request):
+#     form = CreateUserForm()
+
+#     if request.method == 'POST':
+#         form = CreateUserForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Votre compte a été crée avec succès !')
+#             return redirect('login')
+            
+#     context = {'form':form}
+#     return render (request=request, template_name="registration/signup.html", context=context)
+
+   
+
+def login_page(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+
+            return redirect('url_home')
+        else:
+            messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
+            return redirect('login')
+            
+
+    context = {}
+    return render(request, 'accounts/login.html', context)
+
+
+def logout_page(request):
+    logout(request)
+    return redirect('login')
+
+
+
+
