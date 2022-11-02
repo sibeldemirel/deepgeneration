@@ -101,7 +101,7 @@ body {
 .btn-group{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 0.5%;
 
 }
@@ -124,17 +124,19 @@ body {
 
 
 .bulle {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 1px solid #f1f1f1;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 35px 0;
+    margin: 30px 0;
     background-color: rgb(0, 0, 0);
     cursor: pointer;
     position: relative;
+    font-size: large;
+    letter-spacing: 1px;
 }
 
 
@@ -151,9 +153,21 @@ body {
 }
 
 
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    background-color: #f1f1f170;
+    width: 600px;
+    border-radius: 20px;
+    margin: 50px;
+}
+
+
 .content{
     padding: 50px 50px 50px;
     flex-grow: 1;
+
 }
 
 
@@ -167,11 +181,17 @@ body {
 }
 
 
+.contact100-form validate-form{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
 .container-contact100{
     display: flex;
-    flex-direction: column;
-    align-items:center
-
+    flex-direction:column;
+    align-items:center;
 }
 
 
@@ -189,6 +209,7 @@ body {
     top: 15%;
     left: 5%;
 }
+
 
 
 .contenu{
@@ -225,7 +246,7 @@ body {
     background-color: rgba(0, 0, 0, 0.247);
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     
 }
 
@@ -310,11 +331,16 @@ h2 span {
     width: 500px;
     margin-bottom: 30px;
     background-color: rgba(255, 255, 255, 0.336);
+    font-size: large;
+    font-weight: lighter;
 }
 
 
 label{
     color: white;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: large;
 }
 
 
@@ -408,6 +434,11 @@ textarea{
 .titre_page{
     display: flex;
     justify-content: flex-start;
+}
+
+
+.wrap-contact100{
+    padding: 20px;
 }
 
 

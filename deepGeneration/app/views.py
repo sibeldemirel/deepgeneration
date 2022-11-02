@@ -138,3 +138,10 @@ class SignUpPage(CreateView) :
     form_class = forms.UserFormCustom
     success_url = reverse_lazy('login')
     template_name = "registration/signup.html"
+
+
+
+# def rgpd_page(request):
+#     title = "Politique de confidentialité"
+#     context = {"title" : title}
+#     return render(request, 'app/RGPD.html', context = context)

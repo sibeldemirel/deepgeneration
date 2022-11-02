@@ -13,4 +13,5 @@ urlpatterns = [
     path('special/', views.special_page, name = 'url_special'),
     path('list/', views.ModelListView.as_view(), name = 'url_requestsList'),
     path('signup/', views.SignUpPage.as_view(), name = 'url_signup'),
+    # path('rgpd/', views.rgpd_page , name = 'url_rgpd')
 ]
