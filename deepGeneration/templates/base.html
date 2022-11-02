@@ -23,17 +23,20 @@
 </head>
 <body>
     {% block header %}
-        {% comment %} <div id="icon-login"><a  href={% url 'url_login' %}>Se connecter</a></div> {% endcomment %}
+
     {% endblock header %}
-    <div class="content">
-    {% block nav %} {% endblock nav %}
+
+    <main>
     {% block content %} {% endblock content %}
-    </div>
+    {% block nav %} {% endblock nav %}
+    </main>
+   
     {% include 'includes/footer.html' %}
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="../static/js/app.js"></script>
+
 </body>
 </html>
 

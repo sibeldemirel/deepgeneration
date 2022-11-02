@@ -35,7 +35,7 @@ a:active, a:focus {
 
 body {
     font-family: Abril fatface, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     background: url('../img/fondhome2.jpg');
     background-repeat: no-repeat repeat;
     background-size: cover;
@@ -45,11 +45,15 @@ body {
     flex-direction: column;
 }
 
+main{
+    flex-grow: 1;
+}
 
 .border_contact{
     box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884);
     width: 40%;
 }
+
 
 h1 span {
     position: relative;
@@ -78,6 +82,11 @@ h2 span {
     top: 50px;
     display: flex;
     justify-content: space-between;
+}
+
+.container_nav{
+    display: flex;
+    align-items: center;
 }
 
 .btn-first {
@@ -156,6 +165,11 @@ h2 span {
     width: 150px;
 }
 
+#blog-log{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .bulle {
     width: 100px;
@@ -165,7 +179,8 @@ h2 span {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 35px 0;
+    text-align: center;
+    margin: 35px;
     background-color: rgb(0, 0, 0);
     cursor: pointer;
     position: relative;
@@ -182,12 +197,6 @@ h2 span {
 #centrer-btn{
     display: flex;
     justify-content: center;
-}
-
-
-.content{
-    padding: 50px 50px 50px;
-    flex-grow: 1;
 }
 
 
@@ -225,11 +234,6 @@ h2 span {
 }
 
 
-.contenu{
-    display: flex;
-    justify-content: center;
-}
-
 #section_form{
     background-color: rgb(107, 115, 177);
     width: 22%;
@@ -265,9 +269,8 @@ h2 span {
 
 .footer{
     padding: 1.2%;
+    margin-top: auto;
     background-color: rgba(230, 52, 96, 0.678);
-    position: bottom;
-    bottom:0;
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
@@ -310,6 +313,10 @@ h2 span {
 .header{
     background-color:rgba(0, 0, 0, 0.699);
     padding: 1.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
 }
 

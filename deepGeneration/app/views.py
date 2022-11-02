@@ -144,7 +144,7 @@ def contact_page(request):
     context = {"title" : title}
     return render(request, 'app/contact.html', context = context)
 
-@login_required
+@login_required(login_url='login')
 def special_page(request) :
     title = "special"
     context = {"title" : title}
@@ -199,6 +199,7 @@ def login_page(request):
             return redirect('url_home')
         else:
             messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
+            return redirect('login')
             
 
     context = {}

@@ -1,12 +1,14 @@
+
 <ul class="medias">
     <li class="bulle"><a  href={% url 'url_home' %}>Accueil</a></li>
     <li class="bulle"><a  href={% url 'url_blog' %}>Blog</a></li>
-    {% if user.is_authentificated %}
+    {% if user.is_authenticated %}
     <li class="bulle"><span>{{user.get_username}}</span></li>
     <li class="bulle"><a  href={% url 'url_image' %}>Image</a></li>
     <li class="bulle"><a  href={% url 'url_codeArticle' %}>Article</a></li>
     <li class="bulle"><a  href={% url 'url_code' %}>Code</a></li>
     <li class="bulle"><a  href={% url 'url_code' %}>Espace personnel</a></li>
+    <li class="bulle"><a  href={% url 'logout' %}>Déconnexion</a></li>
     {% else %}
     <li class="bulle"><a href={% url 'url_signup' %}>Inscription</a></li>
     <li class="bulle"><a href={% url 'login' %}>Connexion</a></li>
