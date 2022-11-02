@@ -82,6 +82,7 @@ h2 span {
     top: 50px;
     display: flex;
     justify-content: space-around;
+    text-decoration: none;
 }
 
 .container_nav{
@@ -105,6 +106,7 @@ h2 span {
     width: 300px;
     color: #ffffff;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
