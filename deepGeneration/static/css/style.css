@@ -81,11 +81,18 @@ h2 span {
     position: relative;
     top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    text-decoration: none;
 }
 
 .container_nav{
     display: flex;
+    align-items: center;
+}
+
+#bandeau{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -99,6 +106,7 @@ h2 span {
     width: 300px;
     color: #ffffff;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
