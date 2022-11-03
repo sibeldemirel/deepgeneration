@@ -276,6 +276,8 @@ h2 span {
 
 
 .footer{
+    position: bottom;
+    bottom: 0;
     padding: 1.2%;
     margin-top: auto;
     background-color: rgba(230, 52, 96, 0.678);
