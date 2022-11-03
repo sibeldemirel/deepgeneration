@@ -39,21 +39,22 @@ body {
     background: url('../img/fondhome2.jpg');
     background-repeat: no-repeat repeat;
     background-size: cover;
-    position: relative;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
 
-/* main{
-    flex-grow: 1;
-} */
 
 .border_contact{
     box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884);
     width: 40%;
 }
 
+.content{
+    padding: 3%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    flex-grow: 1;
+}
 
 h1 span {
     position: relative;
@@ -152,7 +153,7 @@ h2 span {
 .btn-group{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 0.5%;
 
 }
@@ -176,12 +177,12 @@ h2 span {
 #blog-log{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .bulle {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 1px solid #f1f1f1;
     display: flex;
@@ -192,6 +193,8 @@ h2 span {
     background-color: rgb(0, 0, 0);
     cursor: pointer;
     position: relative;
+    font-size: large;
+    letter-spacing: 1px;
 }
 
 
@@ -208,6 +211,15 @@ h2 span {
 }
 
 
+.contact{
+    background-color: #f1f1f173;
+    margin: 25px;
+    margin-left: 550px;
+    margin-right: 550px;
+    border-radius: 30px;
+}
+
+
 .contact100-form-btn{
     font-family: Abril fatface, sans-serif;
     font-weight: lighter;
@@ -218,16 +230,24 @@ h2 span {
 }
 
 
+.contact100-form validate-form{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
 .container-contact100{
     display: flex;
-    flex-direction: column;
-    align-items:center
-
+    flex-direction:column;
+    align-items:center;
 }
 
 
 .container-btns {
     margin-right: 10%;
+    margin-bottom: 250px;
+    margin-top: 100px;
     position: relative;
     top: 50px;
     display: flex;
@@ -236,9 +256,12 @@ h2 span {
 
 
 .container-first {
-    position: absolute;
+    /* position: absolute; */
     top: 15%;
     left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
 }
 
 
@@ -270,20 +293,24 @@ h2 span {
     background-color: rgba(0, 0, 0, 0.247);
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     
 }
 
 
 .footer{
+    position: bottom;
+    bottom: 0;
     padding: 1.2%;
     margin-top: auto;
     background-color: rgba(230, 52, 96, 0.678);
     color: rgb(0, 0, 0);
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    /* position: bottom;
-    bottom: 0; */
+    align-items: flex-end;
+    position: bottom;
+    bottom: 0;
 }
 
 
@@ -374,11 +401,21 @@ h2 span {
     width: 500px;
     margin-bottom: 30px;
     background-color: rgba(255, 255, 255, 0.336);
+    font-size: large;
+    font-weight: lighter;
+}
+
+
+.iubenda{
+    color: #ffffff;
 }
 
 
 label{
     color: white;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: large;
 }
 
 
@@ -471,6 +508,11 @@ textarea{
 #btn-aperçu{
     margin-left: 1em;
 
+}
+
+
+.wrap-contact100{
+    padding: 20px;
 }
 
 

@@ -25,15 +25,6 @@ def home_page(request):
     context = {"title" : title}
     return render(request, 'app/home.html', context = context)
 
-def articles_recent(request) :
-    title = "Articles Récents"
-    articles = models.ArticleModel.objects.all()#filter(article_date= "2022-10-28") # ajouter filtre date utilisateur
-    # request.session['title'] = title
-    # request.session['article'] = article
-    # request.session['image'] = image  
-    context = {"title" : title, "articles" : articles}
-    return render(request, 'app/recent_articles.html', context = context)
-
 
 def getDescription(request, form):
     if form.is_valid() :
@@ -47,28 +38,6 @@ def article_page(request):
     return render(request, 'app/article.html', context = context)
 
 
-
-
-# def code_article_page(request):
-#     title = "Article Generator"
-#     form = forms.ArticleForm(request.POST or None)
-#     if request.method =="POST" :
-#         article = form.save(commit=False)
-#         article.user = request.user
-#         description = getDescription(request)
-#         print(description) 
-#         article_gen = gen.generateArticle(description)
-#         article.article = article_gen
-#         article.save()
-#         request.session['blog'] = article
-#         context = {"title" : title, 'article' : article_gen}
-#         request.session['article'] = article_gen
-#         request.session['title'] = title
-#         return render(request, 'app/code_article.html', context = context)
-#     else :
-#             # form = forms.ApiForm()
-#             context = {"title" : title, 'form' : form}
-#             return render(request, 'app/form.html', context = context)
 
 def code_article_page(request):
     title = "Article Generator"
@@ -198,3 +167,16 @@ def codeDetail_page(request,id):
     code = get_object_or_404(models.CodeModel,pk=id)
     context = {"title" : title, 'code' : code.code}
     return render (request,'app/code.html',context=context)
+
+
+def articles_recent(request) :
+    title = "Blog"
+    articles = models.ArticleModel.objects.all().filter()#generating_date= "2022-11-03")
+    context = {"title" : title, "articles" : articles}
+    return render(request, 'app/recent_articles.html', context = context)
+
+def blogDetail_page(request,id):
+    title = "Article"
+    article = get_object_or_404(models.ArticleModel,pk=id)
+    context = {"title" : title, 'article' : article.article}
+    return render (request,'app/code_article.html',context=context)

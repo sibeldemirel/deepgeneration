@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-<h1> Bienvenue <span>{{user.get_username}}</span> </h1>
 
 <a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
 

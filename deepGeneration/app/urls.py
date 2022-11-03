@@ -17,4 +17,5 @@ urlpatterns = [
     path('image<int:id>', views.imageDetail_page, name = 'url_imageDetail'),
     path('article<int:id>', views.articleDetail_page, name = 'url_articleDetail'),
     path('code<int:id>', views.codeDetail_page, name = 'url_codeDetail'),
+    path('article<int:id>', views.blogDetail_page, name = 'url_blogDetail'),
 ]
