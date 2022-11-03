@@ -45,11 +45,6 @@ body {
     flex-direction: column;
 }
 
-main{
-    display: flex;
-    flex-direction: row;
-    align-content: flex-start;
-}
 
 .border_contact{
     box-shadow: 5px 30px 25px rgba(0, 0, 0, 0.884);
@@ -300,6 +295,8 @@ h2 span {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+    position: bottom;
+    bottom: 0;
 }
 
 
