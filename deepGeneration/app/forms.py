@@ -8,22 +8,33 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 
-class ApiForm(forms.ModelForm):
-    class Meta:
-        model = models.FormModel
-        fields = "__all__"
-    
-# class UserFormCustom(UserCreationForm):
-#     class Meta(UserCreationForm.Meta):
+# class ApiForm(forms.ModelForm):
+#     class Meta:
+#         model = models.FormModel
 #         fields = "__all__"
 
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = models.ImageModel
+        fields = ['description']
+
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = models.ArticleModel
+        fields = ['description']
+
+class CodeForm(forms.ModelForm):
+    class Meta:
+        model = models.CodeModel
+        fields = ['description']
+    
 
 class UserFormCustom(UserCreationForm):
     # email = forms.EmailField(required=True)
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = "__all__"
+        fields = ['username','email','password1','password2']
 
     def __init__(self, *args, **kwargs):
         super(UserFormCustom, self).__init__(*args, **kwargs)

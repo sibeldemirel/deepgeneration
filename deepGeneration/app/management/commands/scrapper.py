@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 import sys
 import time
 import requests
-from datetime import date
 from .generator import Generator
 from .user import User
 from ...models import ImageModel, ArticleModel
+# from django.utils import timezone
 # from . import scrapping
 
 
@@ -82,6 +82,7 @@ def getDates(html) :
 
 
 def generateArticles(url):
+    # today = timezone.now()
     html = getHtml(url)
     descriptionsList = getDescription(html)
     titlesList = getTitles(html)
@@ -114,8 +115,8 @@ def generateArticles(url):
                 time.sleep(20)
         else :
             idx_theme+=1
-            article= ArticleModel(title=titlesList[idx_theme],description=descriptionsList[idx_theme],article=article, generating_date=date.today())
-            image= ImageModel(description=descriptionsList[idx_theme],generating_date=date.today(), url_image=url_image)
+            article= ArticleModel(title=titlesList[idx_theme],description=descriptionsList[idx_theme],article=article)#, generating_date=today)
+            image= ImageModel(description=descriptionsList[idx_theme],url_image=url_image)#,generating_date=today)
             article.save()
             image.save()
             print(idx_theme)
@@ -127,4 +128,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         """ Do your work here """
         generateArticles(NYTurl)
-        self.stdout.write('There are {} things!'.format(BlogModel.objects.count()))
+        self.stdout.write('There are {} things!'.format(ArticleModel.objects.count()))

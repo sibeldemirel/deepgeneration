@@ -1,14 +1,13 @@
 from django.contrib import messages
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
-from . import user, generator, forms, models
+# from . import user, generator, forms, models
 from .management.commands import generator, user
-from .forms import UserFormCustom
+# from .forms import UserFormCustom
 
 
 from os import getenv
@@ -29,15 +28,14 @@ def home_page(request):
 def articles_recent(request) :
     title = "Articles Récents"
     articles = models.ArticleModel.objects.all()#filter(article_date= "2022-10-28") # ajouter filtre date utilisateur
-    # request.session['article'] = article
     # request.session['title'] = title
+    # request.session['article'] = article
     # request.session['image'] = image  
     context = {"title" : title, "articles" : articles}
     return render(request, 'app/recent_articles.html', context = context)
 
 
-def getDescription(request):
-    form = forms.ApiForm(request.POST)
+def getDescription(request, form):
     if form.is_valid() :
         description = form.cleaned_data['description']
         return description
@@ -48,88 +46,100 @@ def article_page(request):
     context = {"article" : article, 'title' : title}
     return render(request, 'app/article.html', context = context)
 
+
+
+
+# def code_article_page(request):
+#     title = "Article Generator"
+#     form = forms.ArticleForm(request.POST or None)
+#     if request.method =="POST" :
+#         article = form.save(commit=False)
+#         article.user = request.user
+#         description = getDescription(request)
+#         print(description) 
+#         article_gen = gen.generateArticle(description)
+#         article.article = article_gen
+#         article.save()
+#         request.session['blog'] = article
+#         context = {"title" : title, 'article' : article_gen}
+#         request.session['article'] = article_gen
+#         request.session['title'] = title
+#         return render(request, 'app/code_article.html', context = context)
+#     else :
+#             # form = forms.ApiForm()
+#             context = {"title" : title, 'form' : form}
+#             return render(request, 'app/form.html', context = context)
+
 def code_article_page(request):
     title = "Article Generator"
+    form = forms.ArticleForm(request.POST or None)
     if request.method =="POST" :
-        # form.save()
-        description = getDescription(request)   
+        articleForm = form.save(commit=False)
+        articleForm.user = request.user
+        
+        description = getDescription(request,form)   
         article = gen.generateArticle(description)
+        articleForm.article = article
+        articleForm.save()
         request.session['blog'] = article
         context = {"title" : title, 'article' : article}
         request.session['article'] = article
         request.session['title'] = title
         return render(request, 'app/code_article.html', context = context)
     else :
-            form = forms.ApiForm()
             context = {"title" : title, 'form' : form}
             return render(request, 'app/form.html', context = context)
 
 
 def image_page(request):
     title = "Image Generator"
+    form = forms.ImageForm(request.POST or None)
     if request.method =="POST" :
-        # form.save()
-        description = getDescription(request)
+        imageForm = form.save(commit=False)
+        imageForm.user = request.user
+        description = getDescription(request,form)
         image_url = gen.generateImage(description)
+        imageForm.url_image = image_url
+        imageForm.save()
         context = {"title" : title, 'image_url' : image_url, 'description' : description}
         return render(request, 'app/image.html', context = context)
     else :
-        form = forms.ApiForm()
         context = {"title" : title, 'form' : form}
         return render(request, 'app/form.html', context = context)
 
 
 def code_page(request): 
         title = "Code Generator"
+        form = forms.CodeForm(request.POST or None)
         if request.method =="POST" :
-            # form.save()
-            description = getDescription(request)
+            codeForm = form.save(commit=False)
+            codeForm.user = request.user
+            description = getDescription(request,form)
             code = gen.generateCode(description)
+            codeForm.code = code
+            codeForm.save()
             context = {"title" : title, 'code' : code}
             return render(request, 'app/code.html', context = context)
         else :
-            form = forms.ApiForm()
             context = {"title" : title, 'form' : form}
             return render(request, 'app/form.html', context = context)
 
 
 @login_required
 def profil_page(request) :
+    user_id = request.user.id
+    articles = models.ArticleModel.objects.all().filter(user_id= user_id)
+    images = models.ImageModel.objects.all().filter(user_id= user_id)
+    codes = models.CodeModel.objects.all().filter(user_id= user_id)
     title = "Espace Personnelle"
-    context = {"title" : title}
-    return render(request, 'registration/profil.html', context = context)
+    context = {"title" : title, 'articles' : articles, 'images' : images, 'codes' : codes}
+    return render(request, 'registration/profil.html', context = context,)
 
 
 def contact_page(request):
     title = "Contact"
     context = {"title" : title}
     return render(request, 'app/contact.html', context = context)
-
-
-    
-# def login_page(request):
-
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-
-#         user = authenticate(request, username=username, password=password)
-
-#         if user is not None:
-#             login(request, user)
-
-#             return redirect('url_home')
-#         else:
-#             # messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
-#             pass
-
-# def login(request):
-#     is_authenticated = request.user.is_authenticated()
-#     user = request.user
-#     request.session['is_authenticated'] = request.user.is_authenticated()
-#     context = {"is_authenticated" : is_authenticated, "user" : user}
-#     return render(request,'registration/login.html')
-            
 
 
 def logout_page(request):
@@ -147,6 +157,7 @@ class SignUpPage(CreateView) :
         title = 'Inscription'
         context = super().get_context_data(**kwargs)
         context['title'] = title
+        # messages.success(request, 'Votre compte a été crée avec succès !')
         return context
 
     form_class = forms.UserFormCustom
@@ -167,33 +178,23 @@ class SignUpPage(CreateView) :
 #     context = {'form':form}
 #     return render (request=request, template_name="registration/signup.html", context=context)
 
-   
-
-def login_page(request):
-
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-
-            return redirect('url_home')
-        else:
-            messages.info(request, "L'adresse email et le mot de passe ne correspondent pas !")
-            return redirect('login')
-            
-
-    context = {}
-    return render(request, 'accounts/login.html', context)
 
 
-def logout_page(request):
-    logout(request)
-    return redirect('login')
+def imageDetail_page(request,id):
+    title = "Image Generator"
+    image = get_object_or_404(models.ImageModel,pk=id)
+    context = {"title" : title, 'image_url' : image.url_image, 'description' : image.description}
+    return render (request,'app/image.html',context=context)
 
 
+def articleDetail_page(request,id):
+    title = "Article Generator"
+    article = get_object_or_404(models.ArticleModel,pk=id)
+    context = {"title" : title, 'article' : article.article}
+    return render (request,'app/code_article.html',context=context)
 
-
+def codeDetail_page(request,id):
+    title = "Code Generator "
+    code = get_object_or_404(models.CodeModel,pk=id)
+    context = {"title" : title, 'code' : code.code}
+    return render (request,'app/code.html',context=context)

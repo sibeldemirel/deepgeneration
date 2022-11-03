@@ -1,5 +1,7 @@
+from email.policy import default
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 class FormModel(models.Model):
     description = models.CharField(
@@ -7,8 +9,6 @@ class FormModel(models.Model):
         blank=False,
         null=False,
     )
-
-
 
 class ArticleModel(models.Model):
 
@@ -30,8 +30,17 @@ class ArticleModel(models.Model):
 
     # article_date = models.DateTimeField()
     
-    generating_date = models.DateTimeField()
+    generating_date = models.DateTimeField(
+        default=timezone.now,
+        blank=False,
+        null=False,
+    )
 
+    user = models.ForeignKey(User,
+    null=True,
+    blank=True,
+    on_delete=models.CASCADE,
+    )
 
 
 class ImageModel(models.Model):
@@ -47,7 +56,18 @@ class ImageModel(models.Model):
     null=False,
     )
 
-    generating_date = models.DateTimeField()
+    generating_date = models.DateTimeField(
+        default=timezone.now,
+        blank=False,
+        null=False,
+        )
+
+    user = models.ForeignKey(
+    User,
+    null=True,
+    blank=True,
+    on_delete=models.CASCADE,
+    )
 
 
 class CodeModel(models.Model):
@@ -62,4 +82,14 @@ class CodeModel(models.Model):
     null=False,
     )
 
-    generating_date = models.DateTimeField()
+    generating_date = models.DateTimeField(
+        default=timezone.now,
+        blank=False,
+        null=False,)
+
+    user = models.ForeignKey(
+        User,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        )

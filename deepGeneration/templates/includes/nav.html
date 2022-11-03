@@ -32,11 +32,11 @@
     {% else %}
         {% url 'url_signUp' as url_signUp %}
         {% url 'login' as login %}
-        {% if request.path != url_signUp %}
+        {% if request.path != url_signUp and request.path != login %}
             <li class="bulle"><a href={% url 'url_signUp' %}>Inscription</a></li>
         {% endif %}
         
-        {% if request.path !=  login %}
+        {% if request.path !=  login and request.path != url_signUp %}
             <li class="bulle"><a href={% url 'login' %}>Connexion</a></li>
         {% endif %}
     {% endif %}

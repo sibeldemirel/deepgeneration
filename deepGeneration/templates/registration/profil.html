@@ -1,18 +1,29 @@
 {% extends 'base_sous_pages.html' %}
+{% load static %}
 
 {% block content %}
 <h1> Bienvenue <span>{{user.get_username}}</span> </h1>
 
 <a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
 
-{% comment %} {% for request in requests_app  %}
-     {{request.desciption}}
-{% endfor %} {% endcomment %}
-
 <h2> Liste des Images </h2>
+{% for image in images %}
+     <a href= {% url 'url_imageDetail' image.id %} > {{image.description}} </a>
+     <br>
+{% endfor %}
 
 <h2> Liste des Articles </h2>
+{% for article in articles %}
+     <a href= {% url 'url_articleDetail' article.id %} > {{article.description}} </a>
+     <br>
+{% endfor %}
+
 
 <h2> Liste des Codes </h2>
+{% for code in codes %}
+<a href= {% url 'url_codeDetail' code.id %} > {{code.description}} </a>
+<br>
+{% endfor %}
+
 
 {% endblock content %}
