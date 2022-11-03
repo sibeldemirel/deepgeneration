@@ -36,6 +36,7 @@ def article_page(request):
     article = request.session['article']
     context = {"article" : article, 'title' : title}
     return render(request, 'app/article.html', context = context)
+       
 
 
 
@@ -50,7 +51,6 @@ def code_article_page(request):
         article = gen.generateArticle(description)
         articleForm.article = article
         articleForm.save()
-        request.session['blog'] = article
         context = {"title" : title, 'article' : article}
         request.session['article'] = article
         request.session['title'] = title
@@ -100,7 +100,7 @@ def profil_page(request) :
     articles = models.ArticleModel.objects.all().filter(user_id= user_id)
     images = models.ImageModel.objects.all().filter(user_id= user_id)
     codes = models.CodeModel.objects.all().filter(user_id= user_id)
-    title = "Espace Personnelle"
+    title = "Historique"
     context = {"title" : title, 'articles' : articles, 'images' : images, 'codes' : codes}
     return render(request, 'registration/profil.html', context = context,)
 
@@ -158,6 +158,7 @@ def imageDetail_page(request,id):
 
 def articleDetail_page(request,id):
     title = "Article Generator"
+    print("LAAAAAAA")
     article = get_object_or_404(models.ArticleModel,pk=id)
     context = {"title" : title, 'article' : article.article}
     return render (request,'app/code_article.html',context=context)
@@ -178,5 +179,7 @@ def articles_recent(request) :
 def blogDetail_page(request,id):
     title = "Article"
     article = get_object_or_404(models.ArticleModel,pk=id)
+    request.session['title'] = title 
+    request.session['article'] = article.article
     context = {"title" : title, 'article' : article.article}
     return render (request,'app/code_article.html',context=context)

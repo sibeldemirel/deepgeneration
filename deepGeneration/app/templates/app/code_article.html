@@ -8,7 +8,11 @@
     </div>
     <div class= "btn-group">
         <div id="btn-copy"><button class = "btn-copier">Copier</button></div>
+        {% comment %} {% if user.is_authenticated %} {% endcomment %}
         <div id="btn-aperçu"><button class="btn-aperçu"><a href={% url 'url_article' %}>Aperçu </a></button></div>
+        {% comment %} {% else %} {% endcomment %}
+        {% comment %} <div id="btn-aperçu"><button class="btn-aperçu"><a href= {% url 'url_articleBlogDetail' article.id %}> Aperçu </a></button></div> {% endcomment %}
+        {% comment %} {% endif %} {% endcomment %}
     </div>
 </div>
 

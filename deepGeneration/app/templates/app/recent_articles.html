@@ -9,8 +9,8 @@
         <li>
         <article class = "font_article">>
             <div>
-            <a href={% url 'url_blogDetail' article.id %}><h2> {{article.title}} </h2></a>
-            <p> {{article.description}} </p>
+            <a href={% url 'url_blogDetail' article.id %}> <h2> {{article.description}} </h2></a>
+            <a href={% url 'url_articleBlogDetail' article.id %}> <h2> {{article.description}} </h2></a>
             </div>
         </article>
         </li>

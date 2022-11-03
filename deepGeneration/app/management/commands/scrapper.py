@@ -115,6 +115,7 @@ def generateArticles(url):
                 time.sleep(20)
         else :
             idx_theme+=1
+            article += ' <img src="'+ url_image +'>'
             article= ArticleModel(title=titlesList[idx_theme],description=descriptionsList[idx_theme],article=article)#, generating_date=today)
             image= ImageModel(description=descriptionsList[idx_theme],url_image=url_image)#,generating_date=today)
             article.save()
