@@ -82,20 +82,15 @@ def getDates(html) :
 
 
 def generateArticles(url):
-    # today = timezone.now()
     html = getHtml(url)
     descriptionsList = getDescription(html)
     titlesList = getTitles(html)
-    # articles_datesList = getDates(html)
     idx_theme = 0
     a=0
     while idx_theme < len(descriptionsList):
         try :
             if a==0:
                 article = gen.generateArticle(descriptionsList[idx_theme])
-                article = article.replace("h2","h3")
-                article = article.replace("h1","h2")
-
                 a=1
                 url_image = gen.generateImage(descriptionsList[idx_theme])
                 a=0
@@ -115,7 +110,7 @@ def generateArticles(url):
                 time.sleep(20)
         else :
             idx_theme+=1
-            article += ' <img src="'+ url_image +'>'
+            article += '\n <img src="'+ url_image +'">'
             article= ArticleModel(title=titlesList[idx_theme],description=descriptionsList[idx_theme],article=article)#, generating_date=today)
             image= ImageModel(description=descriptionsList[idx_theme],url_image=url_image)#,generating_date=today)
             article.save()

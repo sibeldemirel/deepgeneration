@@ -5,11 +5,12 @@
 
 <form method="post">
     {% csrf_token %}
-    <fieldset id="section_form">
-    {{form}}
-    <input type="submit" value="OK" style="width:50px;">
-    </fieldset>
+    <div id="section-form">
+        <fieldset >
+            {{form}}
+            <input type="submit" value="Générer" style="width:80px;">
+        </fieldset>
+    </div>
 </form>
-</div>
 {% endif %}
-{% endblock content %}
+{% endblock content %} 

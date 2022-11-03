@@ -3,12 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-class FormModel(models.Model):
-    description = models.CharField(
-        max_length=200,
-        blank=False,
-        null=False,
-    )
 
 class ArticleModel(models.Model):
 
@@ -18,7 +12,8 @@ class ArticleModel(models.Model):
         null=True,
     )
 
-    description = models.TextField(
+    description = models.CharField(
+        max_length=1000,
         blank=False,
         null=False,
     )
@@ -45,9 +40,10 @@ class ArticleModel(models.Model):
 
 class ImageModel(models.Model):
 
-    description = models.TextField(
-    blank=False,
-    null=False,
+    description = models.CharField(
+        max_length=1000,
+        blank=False,
+        null=False,
     )
 
     url_image = models.URLField(
@@ -72,9 +68,10 @@ class ImageModel(models.Model):
 
 class CodeModel(models.Model):
 
-    description = models.TextField(
-    blank=False,
-    null=False,
+    description = models.CharField(
+        max_length=250,
+        blank=False,
+        null=False,
     )
 
     code = models.TextField(

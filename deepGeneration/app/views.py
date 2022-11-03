@@ -26,7 +26,7 @@ def home_page(request):
     return render(request, 'app/home.html', context = context)
 
 
-def getDescription(request, form):
+def getDescription(form):
     if form.is_valid() :
         description = form.cleaned_data['description']
         return description
@@ -47,7 +47,7 @@ def code_article_page(request):
         articleForm = form.save(commit=False)
         articleForm.user = request.user
         
-        description = getDescription(request,form)   
+        description = getDescription(form)   
         article = gen.generateArticle(description)
         articleForm.article = article
         articleForm.save()
@@ -66,7 +66,7 @@ def image_page(request):
     if request.method =="POST" :
         imageForm = form.save(commit=False)
         imageForm.user = request.user
-        description = getDescription(request,form)
+        description = getDescription(form)
         image_url = gen.generateImage(description)
         imageForm.url_image = image_url
         imageForm.save()
@@ -83,7 +83,7 @@ def code_page(request):
         if request.method =="POST" :
             codeForm = form.save(commit=False)
             codeForm.user = request.user
-            description = getDescription(request,form)
+            description = getDescription(form)
             code = gen.generateCode(description)
             codeForm.code = code
             codeForm.save()
@@ -115,10 +115,6 @@ def logout_page(request):
     logout(request)
     return redirect('login')
 
-class ModelListView(LoginRequiredMixin,ListView) :
-    model = models.FormModel
-    template_name = "app/List_request.html"
-    context_object_name = "request_app"
 
 class SignUpPage(CreateView) :
 
@@ -134,21 +130,6 @@ class SignUpPage(CreateView) :
     template_name = "registration/signUp.html"
 
 
-# def signup_page(request):
-#     form = CreateUserForm()
-
-#     if request.method == 'POST':
-#         form = CreateUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Votre compte a été crée avec succès !')
-#             return redirect('login')
-            
-#     context = {'form':form}
-#     return render (request=request, template_name="registration/signup.html", context=context)
-
-
-
 def imageDetail_page(request,id):
     title = "Image Generator"
     image = get_object_or_404(models.ImageModel,pk=id)
@@ -158,7 +139,6 @@ def imageDetail_page(request,id):
 
 def articleDetail_page(request,id):
     title = "Article Generator"
-    print("LAAAAAAA")
     article = get_object_or_404(models.ArticleModel,pk=id)
     context = {"title" : title, 'article' : article.article}
     return render (request,'app/code_article.html',context=context)
@@ -172,7 +152,10 @@ def codeDetail_page(request,id):
 
 def articles_recent(request) :
     title = "Blog"
-    articles = models.ArticleModel.objects.all().filter()#generating_date= "2022-11-03")
+    all_articles = models.ArticleModel.objects.filter(user_id__isnull=True)
+    # last_date = all_articles.values_list('generating_date').order_by('-generating_date')[4][0]
+    # articles = all_articles.filter(generating_date=last_date)
+    articles = all_articles.order_by('-generating_date')[:10]
     context = {"title" : title, "articles" : articles}
     return render(request, 'app/recent_articles.html', context = context)
 
