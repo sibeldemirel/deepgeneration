@@ -46,7 +46,6 @@ def code_article_page(request):
     if request.method =="POST" :
         articleForm = form.save(commit=False)
         articleForm.user = request.user
-        
         description = getDescription(form)   
         article = gen.generateArticle(description)
         articleForm.article = article
