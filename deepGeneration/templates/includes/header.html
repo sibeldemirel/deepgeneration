@@ -2,14 +2,7 @@
 <header>
   <div class="header">
     <h2> {{title}} </h2>
-    {% if user.is_authenticated %}
-        <div style="margin-top: 10px;"><a href="{% url 'logout' %}">
-            {% url 'url_profil' as url_profil %}
-            {% if request.path != url_profil %}
-            <button type="button" class="btn btn-primary" style = "padding:10px; font-weight: bold"><a href={% url 'url_profil' %}>Espace <br> Perso</a></button>
-        {% endif %}
-        </div>
-    {% endif %}
+   
   </div>
 </header>
     

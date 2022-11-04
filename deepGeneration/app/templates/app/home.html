@@ -2,45 +2,35 @@
 
 {% block header %}
 
-{% if user.is_authenticated %}
-<div id="bloc-log">
-
-        <div>
-            <button type="button" class="btn btn-primary" style = "padding:10px; font-weight: bold"><a href={% url 'logout' %}>Déconnexion </a></button>
-        </div>
-</div>
-{% endif %}
-
 {% endblock header %}
 
 
 {% block content %}
 
-<div class="container-fluid">
 <div class="container-first">
-    <div id="bandeau">
-        <div style = "display: inline-block; width: 75;">
-            <h1><span>D</span><span>e</span><span>e</span><span>p</span> <span>Generator</span></h1> 
-    
-     <div>
-        
+
+    <h1><span>D</span><span>e</span><span>e</span><span>p</span> <span>Generator</span></h1>
+
     {% if user.is_authenticated %}
     <div id="bloc-log">
-        <h2><span>{{user.get_username}} </span> Bienvenue, sur ton espace Personnel !</h2>
-        <a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
+        <h2><span>{{user.get_username}} </span>, bienvenue sur ton espace Personnel !  <a  href="{% url 'logout' %}?next={{request.path}}"><img style = "margin-left: 20px; " width= 50 src="../static/img/logout.png" alt="Déconnexion"></a></h2>
+        <br>
+        {% comment %} <div class="bulle"><a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a></div> {% endcomment %}
+        {% comment %} <a  href="{% url 'logout' %}?next={{request.path}}"><img width= 50 src="../static/img/logout.png" alt="Déconnexion"></a> {% endcomment %}
+        
+ 
+        {% comment %} <a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a> {% endcomment %}
         <span><p class="gras_italique_serif" style="color:white;" > Ici, tu peux générer tes images, tes articles et ton code sans trop d'effort <br>
             et les retrouver dans ton historique!<br>
-            Tu peux toujours jetter un oeil à notre blog qui contient les dernières actualités </p></span>
+            Tu peux toujours jeter un oeil à notre blog qui contient les dernières actualités </p></span>
     </div>
     {% else %}
     <h2><span><p class="gras_italique_serif"> Notre temps est précieux ! </p></span>
         <span><p class="gras_italique_serif"> On perd souvent un temps fou à chercher des images libres de droits sur internet, a écrire des articles de blog ou trouver rapidement du code fonctionnel.
-                  En t'inscrivant, tu pourras réaliser tout cela en quelques clics ! </p></span></h2>
+            En t'inscrivant, tu pourras réaliser tout cela en quelques clics et créer ton propre blog ! 
+            N'hésite pas à visiter notre blog dont tous les articles ont été généré avec deepGenerator </p></span></h2>
     {% endif %}
      </div>
-
-
-     
 
      <div class="container-btns">
          <div><button class="btn-first"><a href={% url 'url_blog' %}>Blog</a></button></div>
@@ -56,7 +46,7 @@
          {% endif %}
      </div>
 </div>
-</div>
+{% comment %} </div> {% endcomment %}
 
 
-{% endblock content %}  
+{% endblock content %}

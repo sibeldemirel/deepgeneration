@@ -3,26 +3,31 @@
 
 {% block content %}
 
-<a  href="{% url 'logout' %}?next={{request.path}}">Déconnexion</a>
+<div class="historique">
 
+<div class="list_image">
 <h2> Liste des Images </h2>
 {% for image in images %}
      <a href= {% url 'url_imageDetail' image.id %} > {{image.description}} </a>
      <br>
 {% endfor %}
+</div>
 
+<div class="list_article">
 <h2> Liste des Articles </h2>
 {% for article in articles %}
      <a href= {% url 'url_articleDetail' article.id %} >  {{article.description}} </a>
      <br>
 {% endfor %}
+</div>
 
-
+<div class="list_code">
 <h2> Liste des Codes </h2>
 {% for code in codes %}
 <a href= {% url 'url_codeDetail' code.id %} > {{code.description}} </a>
 <br>
 {% endfor %}
+</div>
 
-
+</div>
 {% endblock content %}
